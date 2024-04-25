@@ -14,6 +14,9 @@ public sealed class GameEngine
     private string levelName = "";
     private string levelSaved = "";
 
+    private string currentMessage = "";
+
+
     public bool IsGameWon()
     {
         return missingGoals == 0;
@@ -100,6 +103,9 @@ public sealed class GameEngine
 
     }
 
+
+
+
     public void Render()
     {
         //Clean the map
@@ -118,7 +124,7 @@ public sealed class GameEngine
             }
             Console.WriteLine();
         }
-        if (missingGoals > 0)
+        /*if (missingGoals > 0)
             Console.WriteLine(missingGoals + " goal" + (missingGoals == 1 ? "s" : "") + " Missing");
         else
             Console.WriteLine("All goals are filled");
@@ -126,9 +132,13 @@ public sealed class GameEngine
         if (levelSaved != "")
         {
             Console.WriteLine("Level has beeb saved under " + levelSaved);
+
             levelSaved = "";
-        }
+        }*/
+
+        DisplayMessage();
     }
+
 
     public void CheckCollision()
     {
@@ -148,6 +158,11 @@ public sealed class GameEngine
             _focusedObject.UndoMove();
             return;
         }
+            else if (obstacle.Type == GameObjectType.Obstacle)
+    {
+        // Handle collision with an Obstacle
+        HandleObstacleCollision(player, (Obstacle)obstacle);
+    }
         else if (obstacle.Type == GameObjectType.Box)
         {
             int boxY = obstacle.PosY + player.getDy();
@@ -181,6 +196,29 @@ public sealed class GameEngine
         }
         map.Save();
     }
+        private void HandleObstacleCollision(GameObject player, Obstacle obstacle)
+{
+    // Display the message associated with the obstacle
+    currentMessage = obstacle.Message;
+
+    // Optionally, handle time effects or other game state changes
+    //UpdateGameTime(obstacle.TimeEffect);
+
+    // Prevent movement into the obstacle if necessary
+    player.UndoMove();
+}
+
+private void DisplayMessage()
+{
+    if (!string.IsNullOrEmpty(currentMessage))
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(currentMessage);
+        Console.ResetColor();
+        currentMessage = ""; // Reset after displaying to prevent repeat display
+    }
+}
+
 
     public void Undo()
     {
