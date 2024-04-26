@@ -158,9 +158,9 @@ public sealed class GameEngine
             _focusedObject.UndoMove();
             return;
         }
+                // Handle collision with an Obstacle (eg.: old toast)
             else if (obstacle.Type == GameObjectType.Obstacle)
     {
-        // Handle collision with an Obstacle
         HandleObstacleCollision(player, (Obstacle)obstacle);
     }
         else if (obstacle.Type == GameObjectType.Box)
@@ -202,7 +202,7 @@ public sealed class GameEngine
     currentMessage = obstacle.Message;
 
     // Optionally, handle time effects or other game state changes
-    //UpdateGameTime(obstacle.TimeEffect);
+    //UpdateGameTime(obstacle.TimeEffect); felix your task haha
 
     // Prevent movement into the obstacle if necessary
     player.UndoMove();
