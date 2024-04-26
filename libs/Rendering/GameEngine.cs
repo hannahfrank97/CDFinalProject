@@ -206,6 +206,20 @@ public sealed class GameEngine
 
     // Prevent movement into the obstacle if necessary
     player.UndoMove();
+
+    //Obstacle becomes floor after collision
+    obstacle.Type = GameObjectType.Floor;
+    obstacle.CharRepresentation = ' ';
+
+    //Refreshing the spot on the map where the obstacle was
+    map.Set(obstacle);
+
+    //Remove the obstacle from the gameObjects list
+    gameObjects.Remove(obstacle);
+
+    //Clearing the message after displaying it
+    //currentMessage = "";
+
 }
 
 private void DisplayMessage()
