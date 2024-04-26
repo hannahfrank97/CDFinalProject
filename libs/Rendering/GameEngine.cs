@@ -13,6 +13,7 @@ public sealed class GameEngine
     private int missingGoals = 0;
     private string levelName = "";
     private string levelSaved = "";
+    private bool keyCollected = false;
 
     public bool IsGameWon()
     {
@@ -141,6 +142,11 @@ public sealed class GameEngine
         {
             map.Save();
             return;
+        }
+
+        if(obstacle.Type == GameObjectType.Key){
+            keyCollected = true;
+            obstacle.Color = ConsoleColor.Cyan;
         }
 
         if (obstacle.Type == GameObjectType.Wall)

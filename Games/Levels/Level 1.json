@@ -6,6 +6,12 @@
 	},
 	"gameObjects": [
 		{
+			"Type": "Key",
+			"Color": 2,
+			"PosX": 4,
+			"PosY": 3
+		},
+		{
 			"Type": "Wall",
 			"Color": 2,
 			"PosX": 4,
