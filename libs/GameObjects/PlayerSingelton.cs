@@ -16,10 +16,43 @@ public sealed class PlayerSingelton : GameObject
         }
     }
 
-    private PlayerSingelton() : base()
+    private PlayerSingelton()
+        : base()
     {
         Type = GameObjectType.Player;
-        CharRepresentation = '☻';
+        CharRepresentation = '↑'; // up: ↑, down: ↓, left: ←, right: →
         Color = ConsoleColor.DarkYellow;
+    }
+
+    public override void Move(int dx, int dy)
+    {
+        if (dx == 0 && dy == -1)
+        {
+            if (CharRepresentation != '↑')
+                CharRepresentation = '↑';
+            else
+                doMove(dx, dy);
+        }
+        else if (dx == 0 && dy == 1)
+        {
+            if (CharRepresentation != '↓')
+                CharRepresentation = '↓';
+            else
+                doMove(dx, dy);
+        }
+        else if (dx == -1 && dy == 0)
+        {
+            if (CharRepresentation != '←')
+                CharRepresentation = '←';
+            else
+                doMove(dx, dy);
+        }
+        else if (dx == 1 && dy == 0)
+        {
+            if (CharRepresentation != '→')
+                CharRepresentation = '→';
+            else
+                doMove(dx, dy);
+        }
     }
 }

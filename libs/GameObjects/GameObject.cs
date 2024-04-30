@@ -1,4 +1,5 @@
 ﻿namespace libs;
+
 using Newtonsoft.Json;
 
 public class GameObject : IGameObject, IMovement
@@ -38,7 +39,13 @@ public class GameObject : IGameObject, IMovement
         this._color = color;
     }
 
-    public GameObject(int posX, int posY, ConsoleColor color, char charRepresentation, GameObjectType type)
+    public GameObject(
+        int posX,
+        int posY,
+        ConsoleColor color,
+        char charRepresentation,
+        GameObjectType type
+    )
     {
         this._posX = posX;
         this._posY = posY;
@@ -112,7 +119,17 @@ public class GameObject : IGameObject, IMovement
         this._color = color;
     }
 
-    public void Move(int dx, int dy)
+    public virtual void Move(int dx, int dy)
+    {
+        this.dY = dy;
+        this.dX = dx;
+        _prevPosX = _posX;
+        _prevPosY = _posY;
+        _posX += dx;
+        _posY += dy;
+    }
+
+    protected void doMove(int dx, int dy)
     {
         this.dY = dy;
         this.dX = dx;
@@ -132,5 +149,4 @@ public class GameObject : IGameObject, IMovement
     {
         return JsonConvert.SerializeObject(this);
     }
-
 }
