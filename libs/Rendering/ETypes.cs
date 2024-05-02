@@ -5,5 +5,5 @@ public enum GameObjectType
   Box, // 2
   Floor, // 3
   Goal, // 4
-  Key //5
+  Obstacle // 5
 }

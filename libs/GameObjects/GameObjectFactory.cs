@@ -24,6 +24,9 @@ public class GameObjectFactory : IGameObjectFactory
             case "Goal":
                 newObj = obj.ToObject<Goal>();
                 break;
+            case "Obstacle":
+                newObj = obj.ToObject<Obstacle>();
+                break;
         }
 
         return newObj;
