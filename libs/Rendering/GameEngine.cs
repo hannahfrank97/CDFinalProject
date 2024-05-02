@@ -152,6 +152,12 @@ public sealed class GameEngine
             return;
         }
 
+        if (obstacle.Type == GameObjectType.Key)
+        {
+            keyCollected = true;
+            obstacle.Color = ConsoleColor.Cyan;
+        }
+
         if (obstacle.Type == GameObjectType.Wall)
         {
             _focusedObject.UndoMove();
