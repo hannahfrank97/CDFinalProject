@@ -2,19 +2,18 @@
 
 namespace libs;
 
-using Newtonsoft.Json;
 using System;
-using System.Dynamic;
 using System.Diagnostics;
+using System.Dynamic;
+using Newtonsoft.Json;
 
 public static class FileHandler
 {
-
     private static string path = "../Games/";
     private static int level = -1;
     private static bool saveLoaded = false;
     private static string[] files;
-    private readonly static string envVar = "LEVELS_PATH";
+    private static readonly string envVar = "LEVELS_PATH";
 
     static FileHandler()
     {
@@ -28,11 +27,11 @@ public static class FileHandler
 
     private static void Initialize()
     {
-
         if (Environment.GetEnvironmentVariable(envVar) != null)
         {
             path = Environment.GetEnvironmentVariable(envVar);
-        };
+        }
+        ;
 
         // Check if environment variable is set
         if (Directory.Exists(path + "Levels/"))
@@ -44,12 +43,14 @@ public static class FileHandler
         {
             throw new DirectoryNotFoundException($"Directory not found at path: {path}");
         }
-
     }
 
     public static void SaveSelector()
     {
-        string[] saveFiles = Directory.GetFiles(path + "/Saves/").OrderBy(filePath => filePath).ToArray();
+        string[] saveFiles = Directory
+            .GetFiles(path + "/Saves/")
+            .OrderBy(filePath => filePath)
+            .ToArray();
         if (saveFiles.Length == 0)
         {
             return;
@@ -68,7 +69,11 @@ public static class FileHandler
         {
             try
             {
-                Console.Write("\nEnter the number of the save file you would like to load(1 / " + saveFiles.Length + ") or 0 to just play: ");
+                Console.Write(
+                    "\nEnter the number of the save file you would like to load(1 / "
+                        + saveFiles.Length
+                        + ") or 0 to just play: "
+                );
                 int saveFileNumber = Convert.ToInt32(Console.ReadLine());
                 if (saveFileNumber == 0)
                 {
@@ -88,7 +93,9 @@ public static class FileHandler
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input. Please enter a number between 1 and " + saveFiles.Length);
+                    Console.WriteLine(
+                        "Invalid input. Please enter a number between 1 and " + saveFiles.Length
+                    );
                 }
             }
             catch (Exception e)
@@ -109,18 +116,19 @@ public static class FileHandler
         return IsLevelsLeft();
     }
 
-
-
     public static dynamic ReadJson()
     {
         string levelPath = files[level];
         return ReadJson(levelPath);
     }
+
     public static dynamic ReadJson(string path)
     {
         if (string.IsNullOrEmpty(path))
         {
-            throw new InvalidOperationException("JSON file path not provided in environment variable");
+            throw new InvalidOperationException(
+                "JSON file path not provided in environment variable"
+            );
         }
 
         try
@@ -138,7 +146,6 @@ public static class FileHandler
             throw new Exception($"Error reading JSON file: {ex.Message}");
         }
     }
-
 
     public static void WriteJson(object data, string filePath)
     {
@@ -160,7 +167,7 @@ public static class FileHandler
         * @param map Map object
         * @return string File path of the saved game state
         */
-    public static string saveGameState(List<GameObject> gameObjects, Map map)
+    public static string saveGameState(List<GameObject> gameObjects, Map map, int timeLeft)
     {
         // get the number of current save files
         int saveFiles = Directory.GetFiles(path + "/Saves/").Length;
@@ -182,6 +189,7 @@ public static class FileHandler
         jsonContent.levelNumber = level;
         jsonContent.levelName = map.LevelName;
         jsonContent.map = jsonMap;
+        jsonContent.time = timeLeft;
 
         List<dynamic> jsonGameObjects = new List<dynamic>();
         foreach (var gameObject in gameObjects)
@@ -191,6 +199,13 @@ public static class FileHandler
             jsonGameObject.Color = gameObject.Color;
             jsonGameObject.PosX = gameObject.PosX;
             jsonGameObject.PosY = gameObject.PosY;
+
+            if (gameObject.Type == GameObjectType.Obstacle)
+            {
+                jsonGameObject.TimeEffect = ((Obstacle)gameObject).TimeEffect;
+                jsonGameObject.Message = ((Obstacle)gameObject).Message;
+            }
+
             jsonGameObjects.Add(jsonGameObject);
         }
         jsonContent.gameObjects = jsonGameObjects;
@@ -198,5 +213,4 @@ public static class FileHandler
         WriteJson(jsonContent, filePath);
         return fileName;
     }
-
 }

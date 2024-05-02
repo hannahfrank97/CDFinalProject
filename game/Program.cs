@@ -15,7 +15,7 @@ class Program
         while (engine.LoadNextLevel())
         {
             // Main game loop
-            while (!engine.IsGameWon())
+            while (!engine.IsGameWon() && !engine.IsGameLost())
             {
                 engine.Render();
                 // Handle keyboard input
@@ -24,13 +24,25 @@ class Program
                 // check collision only if player is not undoing the move
                 if (!skipCollisionCheck)
                     engine.CheckCollision();
-
             }
-            engine.Render();
-            Console.WriteLine("Level complete!\nPress any key to continue to the next level...");
-            Console.ReadKey();
+            if (engine.IsGameWon())
+            {
+                engine.Render();
+                Console.WriteLine(
+                    "Level complete!\nPress any key to continue to the next level..."
+                );
+                Console.ReadKey();
+            }
+            else if (engine.IsGameLost())
+                break;
         }
         engine.Render();
-        Console.WriteLine("Congrats, you beat all levels!");
+        if (engine.IsGameWon())
+            Console.WriteLine("Congrats, you beat all levels!");
+        else if (engine.IsGameLost())
+            Console.WriteLine("Game over! You really suck at this!");
+
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
     }
 }

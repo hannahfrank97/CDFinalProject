@@ -5,7 +5,46 @@
     "height": 8,
     "width": 10
   },
+  "time": 324,
   "gameObjects": [
+    {
+      "Type": "Obstacle",
+      "Color": 3,
+      "PosX": 2,
+      "PosY": 2,
+      "TimeEffect": 60,
+      "Message": "You find an old Energy Drink which 'Verleihs you Flügel'. You gain 60 seconds!"
+    },
+    {
+      "Type": "Obstacle",
+      "Color": 3,
+      "PosX": 3,
+      "PosY": 2,
+      "TimeEffect": -120,
+      "Message": "Buried under some papers, you find a plate with a piece of ancient, moldy toast. The sight of it makes you nauseous. You loose 120 seconds!"
+    },
+    {
+      "Type": "Obstacle",
+      "Color": 3,
+      "PosX": 4,
+      "PosY": 2,
+      "TimeEffect": 120,
+      "Message": "Amidst the mess, you knock over an old talking alarm clock that starts blabbering about the 'good old days' when people woke up early. Its incessant chatter is surprisingly motivating and you gain 120 seconds!"
+    },
+    {
+      "Type": "Obstacle",
+      "Color": 3,
+      "PosX": 5,
+      "PosY": 2,
+      "TimeEffect": -180,
+      "Message": "You accidently drink a whole bottle of whine. You feel dizzy and loose 180 seconds!"
+    },
+    {
+      "Type": "Key",
+      "Color": 2,
+      "PosX": 7,
+      "PosY": 3
+    },
     {
       "Type": "Wall",
       "Color": 2,
@@ -15,20 +54,14 @@
     {
       "Type": "Player",
       "Color": 6,
-      "PosX": 3,
-      "PosY": 2
+      "PosX": 4,
+      "PosY": 3
     },
     {
       "Type": "Goal",
       "Color": 5,
       "PosX": 6,
       "PosY": 6
-    },
-    {
-      "Type": "Key",
-      "Color": 5,
-      "PosX": 6,
-      "PosY": 7
     },
     {
       "Type": "Wall",

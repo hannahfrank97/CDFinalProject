@@ -111,9 +111,18 @@ public sealed class GameEngine
         return startTime.AddSeconds(levelTimeSeconds).Subtract(DateTime.Now);
     }
 
+    public bool IsGameLost()
+    {
+        return timeLeft().TotalSeconds <= 0;
+    }
+
     public void SaveToFile()
     {
-        levelSaved = FileHandler.saveGameState(gameObjects, map);
+        levelSaved = FileHandler.saveGameState(
+            gameObjects,
+            map,
+            Convert.ToInt32(timeLeft().TotalSeconds)
+        );
     }
 
     public void Render()
@@ -138,10 +147,22 @@ public sealed class GameEngine
             }
             Console.WriteLine();
         }
-        if (missingGoals > 0)
-            Console.WriteLine(missingGoals + " goal" + (missingGoals == 1 ? "s" : "") + " Missing");
+
+        if (keyCollected)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Key collected");
+        }
         else
-            Console.WriteLine("All goals are filled");
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Key not collected");
+        }
+
+        // if (missingGoals > 0)
+        //     Console.WriteLine(missingGoals + " goal" + (missingGoals == 1 ? "s" : "") + " Missing");
+        // else
+        //     Console.WriteLine("All goals are filled");
 
         if (levelSaved != "")
         {
