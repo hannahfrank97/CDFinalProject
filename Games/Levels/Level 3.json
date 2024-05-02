@@ -1,5 +1,6 @@
 {
 	"levelName": "Hard? I don't think so!",
+	"time": 300,
 	"map": {
 		"width": 12,
 		"height": 10
