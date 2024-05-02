@@ -22,9 +22,6 @@ public sealed class GameEngine
     private DateTime startTime = DateTime.Now;
     private int levelTimeSeconds = 0;
 
-    // TODO: is this in the right place?
-    private bool keyCollected = false;
-
     public bool IsGameWon()
     {
         //return missingGoals == 0;
