@@ -1,5 +1,6 @@
 {
 	"levelName": "You're mid",
+	"time": 300,
 	"map": {
 		"width": 10,
 		"height": 8
