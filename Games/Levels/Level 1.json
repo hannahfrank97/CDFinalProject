@@ -58,7 +58,7 @@
 		{
 			"Type": "Key",
 			"Color": 2,
-			"PosX": 4,
+			"PosX": 7,
 			"PosY": 3
 		},
 		{
@@ -78,12 +78,6 @@
 			"Color": 5,
 			"PosX": 6,
 			"PosY": 6
-		},
-		{
-			"Type": "Box",
-			"Color": 6,
-			"PosX": 6,
-			"PosY": 5
 		},
 		{
 			"Type": "Wall",

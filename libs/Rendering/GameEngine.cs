@@ -15,12 +15,15 @@ public sealed class GameEngine
     private string levelSaved = "";
     private bool keyCollected = false;
 
+    private bool DoorUnlocked = false;
+
     private string currentMessage = "";
 
 
     public bool IsGameWon()
     {
-        return missingGoals == 0;
+        //return missingGoals == 0;
+        return DoorUnlocked == true;
     }
 
     public static GameEngine Instance
@@ -77,6 +80,8 @@ public sealed class GameEngine
     {
         // reset previous things:
         gameObjects.Clear();
+        this.keyCollected = false;
+        this.DoorUnlocked = false;
 
         dynamic gameData = FileHandler.ReadJson();
 
@@ -148,14 +153,28 @@ public sealed class GameEngine
         GameObject player = _focusedObject;
         GameObject obstacle = map.Get(player.PosY, player.PosX);
         // move is allowed
-        if (obstacle == null || obstacle.Type == GameObjectType.Floor || obstacle.Type == GameObjectType.Goal)
+        if (obstacle == null || obstacle.Type == GameObjectType.Floor)
         {
             map.Save();
             return;
         }
 
-        if(obstacle.Type == GameObjectType.Key){
-            keyCollected = true;
+        if (obstacle.Type == GameObjectType.Goal)
+        {
+            if (!keyCollected)
+            {
+                _focusedObject.UndoMove();
+            }
+            else
+            {
+                this.DoorUnlocked = true;
+            }
+        }
+
+        // Handle collision with a key
+        if (obstacle.Type == GameObjectType.Key)
+        {
+            this.keyCollected = true;
             obstacle.Color = ConsoleColor.Cyan;
         }
 
@@ -302,6 +321,11 @@ private void DisplayMessage()
 
         if (gameObject != null)
         {
+            if(gameObject.Type == GameObjectType.Key && keyCollected){
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write(' ');
+                return;
+            }
             Console.ForegroundColor = gameObject.Color;
             Console.Write(gameObject.CharRepresentation);
         }
