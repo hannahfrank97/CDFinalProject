@@ -16,6 +16,11 @@ public sealed class GameEngine
 
     private string currentMessage = "";
 
+    private DateTime startTime = DateTime.Now;
+    private int levelTimeSeconds = 0;
+
+    // TODO: is this in the right place?
+    private bool keyCollected = false;
 
     public bool IsGameWon()
     {
@@ -86,8 +91,8 @@ public sealed class GameEngine
 
         levelName = gameData.levelName;
         map.LevelName = levelName;
+        levelTimeSeconds = gameData.time;
         missingGoals = 0;
-
 
         foreach (var gameObject in gameData.gameObjects)
         {
@@ -95,16 +100,18 @@ public sealed class GameEngine
         }
 
         _focusedObject = gameObjects.OfType<PlayerSingelton>().First();
+        startTime = DateTime.Now;
+    }
+
+    public TimeSpan timeLeft()
+    {
+        return startTime.AddSeconds(levelTimeSeconds).Subtract(DateTime.Now);
     }
 
     public void SaveToFile()
     {
         levelSaved = FileHandler.saveGameState(gameObjects, map);
-
     }
-
-
-
 
     public void Render()
     {
@@ -112,6 +119,10 @@ public sealed class GameEngine
         Console.Clear();
 
         PlaceGameObjects();
+
+        // Write how much time is left:
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Time: " + timeLeft().ToString("mm\\:ss"));
 
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(levelName);
@@ -124,7 +135,7 @@ public sealed class GameEngine
             }
             Console.WriteLine();
         }
-        /*if (missingGoals > 0)
+        if (missingGoals > 0)
             Console.WriteLine(missingGoals + " goal" + (missingGoals == 1 ? "s" : "") + " Missing");
         else
             Console.WriteLine("All goals are filled");
@@ -134,11 +145,10 @@ public sealed class GameEngine
             Console.WriteLine("Level has beeb saved under " + levelSaved);
 
             levelSaved = "";
-        }*/
+        }
 
         DisplayMessage();
     }
-
 
     public void CheckCollision()
     {
@@ -147,10 +157,21 @@ public sealed class GameEngine
         GameObject player = _focusedObject;
         GameObject obstacle = map.Get(player.PosY, player.PosX);
         // move is allowed
-        if (obstacle == null || obstacle.Type == GameObjectType.Floor || obstacle.Type == GameObjectType.Goal)
+        if (
+            obstacle == null
+            || obstacle.Type == GameObjectType.Floor
+            || obstacle.Type == GameObjectType.Goal
+        )
         {
             map.Save();
             return;
+        }
+
+        if (obstacle.Type == GameObjectType.Key)
+        {
+            // TODO: where should this be?
+            keyCollected = true;
+            obstacle.Color = ConsoleColor.Cyan;
         }
 
         if (obstacle.Type == GameObjectType.Wall)
@@ -158,18 +179,22 @@ public sealed class GameEngine
             _focusedObject.UndoMove();
             return;
         }
-                // Handle collision with an Obstacle (eg.: old toast)
-            else if (obstacle.Type == GameObjectType.Obstacle)
-    {
-        HandleObstacleCollision(player, (Obstacle)obstacle);
-    }
+        // Handle collision with an Obstacle (eg.: old toast)
+        else if (obstacle.Type == GameObjectType.Obstacle)
+        {
+            // Handle collision with an Obstacle
+            HandleObstacleCollision(player, (Obstacle)obstacle);
+        }
         else if (obstacle.Type == GameObjectType.Box)
         {
             int boxY = obstacle.PosY + player.getDy();
             int boxX = obstacle.PosX + player.getDx();
             GameObject obstacleObstacle = map.Get(boxY, boxX);
 
-            if (obstacleObstacle.Type == GameObjectType.Wall || obstacleObstacle.Type == GameObjectType.Box)
+            if (
+                obstacleObstacle.Type == GameObjectType.Wall
+                || obstacleObstacle.Type == GameObjectType.Box
+            )
             {
                 // do not move the player
                 _focusedObject.UndoMove();
@@ -196,43 +221,42 @@ public sealed class GameEngine
         }
         map.Save();
     }
-        private void HandleObstacleCollision(GameObject player, Obstacle obstacle)
-{
-    // Display the message associated with the obstacle
-    currentMessage = obstacle.Message;
 
-    // Optionally, handle time effects or other game state changes
-    //UpdateGameTime(obstacle.TimeEffect); felix your task haha
-
-    // Prevent movement into the obstacle if necessary
-    player.UndoMove();
-
-    //Obstacle becomes floor after collision
-    obstacle.Type = GameObjectType.Floor;
-    obstacle.CharRepresentation = ' ';
-
-    //Refreshing the spot on the map where the obstacle was
-    map.Set(obstacle);
-
-    //Remove the obstacle from the gameObjects list
-    gameObjects.Remove(obstacle);
-
-    //Clearing the message after displaying it
-    //currentMessage = "";
-
-}
-
-private void DisplayMessage()
-{
-    if (!string.IsNullOrEmpty(currentMessage))
+    private void HandleObstacleCollision(GameObject player, Obstacle obstacle)
     {
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine(currentMessage);
-        Console.ResetColor();
-        currentMessage = ""; // Reset after displaying to prevent repeat display
-    }
-}
+        // Display the message associated with the obstacle
+        currentMessage = obstacle.Message;
 
+        // Optionally, handle time effects or other game state changes
+        levelTimeSeconds += obstacle.TimeEffect;
+
+        // Prevent movement into the obstacle if necessary
+        player.UndoMove();
+
+        //Obstacle becomes floor after collision
+        obstacle.Type = GameObjectType.Floor;
+        obstacle.CharRepresentation = ' ';
+
+        //Refreshing the spot on the map where the obstacle was
+        map.Set(obstacle);
+
+        //Remove the obstacle from the gameObjects list
+        gameObjects.Remove(obstacle);
+
+        //Clearing the message after displaying it
+        //currentMessage = "";
+    }
+
+    private void DisplayMessage()
+    {
+        if (!string.IsNullOrEmpty(currentMessage))
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(currentMessage);
+            Console.ResetColor();
+            currentMessage = ""; // Reset after displaying to prevent repeat display
+        }
+    }
 
     public void Undo()
     {
@@ -244,21 +268,19 @@ private void DisplayMessage()
 
         // iterate through all objects and update their position
         for (int y = 0; y < gameObjectLayer.GetLength(0); y++)
-            for (int x = 0; x < gameObjectLayer.GetLength(1); x++)
-                if (gameObjectLayer[y, x] != null)
-                    if (gameObjectLayer[y, x].Type == GameObjectType.Box)
-                    {
-                        gameObjectLayer[y, x].PosX = x;
-                        gameObjectLayer[y, x].PosY = y;
-                        gameObjectLayer[y, x].setColor(ConsoleColor.Yellow);
-                    }
-                    else if (gameObjectLayer[y, x].Type == GameObjectType.Player)
-                    {
-                        _focusedObject.PosX = x;
-                        _focusedObject.PosY = y;
-                    }
-
-
+        for (int x = 0; x < gameObjectLayer.GetLength(1); x++)
+            if (gameObjectLayer[y, x] != null)
+                if (gameObjectLayer[y, x].Type == GameObjectType.Box)
+                {
+                    gameObjectLayer[y, x].PosX = x;
+                    gameObjectLayer[y, x].PosY = y;
+                    gameObjectLayer[y, x].setColor(ConsoleColor.Yellow);
+                }
+                else if (gameObjectLayer[y, x].Type == GameObjectType.Player)
+                {
+                    _focusedObject.PosX = x;
+                    _focusedObject.PosY = y;
+                }
 
         // Update the missing boxes
         List<Goal> goals = gameObjects.OfType<Goal>().ToList();
@@ -296,7 +318,7 @@ private void DisplayMessage()
     {
         map.Set(_focusedObject);
         gameObjects.ForEach(
-            delegate (GameObject obj)
+            delegate(GameObject obj)
             {
                 if (obj != _focusedObject)
                     map.Set(obj);
