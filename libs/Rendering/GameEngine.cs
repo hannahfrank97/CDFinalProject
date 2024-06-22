@@ -81,15 +81,18 @@
 
         public void RenderGame()
         {
-            // Clean the map except for the timer display
-            Console.SetCursorPosition(0, 2); // Adjust the position to start rendering below the timer
-            Console.Write(new string(' ', Console.WindowWidth * (Console.WindowHeight - 2))); // Clear below timer display
-            Console.SetCursorPosition(0, 2); // Reset cursor position for rendering
+            // Clear the console before rendering the game
+            Console.Clear();
+            
+            UpdateTimerDisplay(); // Keep the timer updated at the top
 
-            PlaceGameObjects();
+            Console.SetCursorPosition(0, 1); // Adjust the position to start rendering below the timer
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(levelName);
+
+            PlaceGameObjects();
+
             // Render the map
             for (int i = 0; i < map.MapHeight; i++)
             {
