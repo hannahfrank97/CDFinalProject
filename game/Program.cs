@@ -11,7 +11,10 @@ class Program
         var engine = GameEngine.Instance;
         var inputHandler = InputHandler.Instance;
 
-        // Allow user to select saved game
+        // Display the main menu
+        ShowMainMenu();
+
+        // Allow user to select saved game if they choose to start the game
         engine.CheckForSaveFiles();
 
         while (engine.LoadNextLevel())
@@ -72,6 +75,47 @@ class Program
             Console.WriteLine("Game over! You really suck at this!");
 
         Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+    }
+
+    static void ShowMainMenu()
+    {
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("Welcome to the Game!");
+            Console.WriteLine("1. Start Game");
+            Console.WriteLine("2. Instructions");
+            Console.WriteLine("3. Exit");
+
+            Console.Write("\nEnter your choice: ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    return; // Exit the menu and start the game
+                case "2":
+                    ShowInstructions();
+                    break;
+                case "3":
+                    Environment.Exit(0); // Exit the application
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    Thread.Sleep(1000); // Wait a bit before showing the menu again
+                    break;
+            }
+        }
+    }
+
+    static void ShowInstructions()
+    {
+        Console.Clear();
+        Console.WriteLine("Instructions:");
+        Console.WriteLine("1. Use the arrow keys to move.");
+        Console.WriteLine("2. Avoid obstacles.");
+        Console.WriteLine("\nPress any key to return to the main menu...");
         Console.ReadKey();
     }
 }

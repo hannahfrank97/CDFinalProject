@@ -31,7 +31,6 @@ public static class FileHandler
         {
             path = Environment.GetEnvironmentVariable(envVar);
         }
-        ;
 
         // Check if environment variable is set
         if (Directory.Exists(path + "Levels/"))
@@ -103,6 +102,10 @@ public static class FileHandler
                 Console.WriteLine(e.Message);
             }
         }
+
+        Console.WriteLine("\nPress any key to return to the main menu...");
+        Console.ReadKey();
+        Console.Clear();
     }
 
     public static bool LoadNextLevel()
