@@ -45,6 +45,7 @@ namespace libs.Dialogue
                 {
                     Console.WriteLine($"{i + 1}. {currentNode.Options[i].Text}");
                 }
+                Console.WriteLine("Enter your choice:");
 
                 int choice;
                 if (int.TryParse(Console.ReadLine(), out choice) && choice > 0 && choice <= currentNode.Options.Count)
