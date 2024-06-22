@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Threading;
-using libs; // Add this line to include the namespace where GameEngine and InputHandler are defined
+using libs;
 
 class Program
 {
+    private static bool isProcessingKeyPress = false;
+    private static readonly object keyPressLock = new object();
+    private static GameEngine engine = GameEngine.Instance;
+    private static InputHandler inputHandler = InputHandler.Instance;
+
     static void Main(string[] args)
     {
         // Setup
         Console.CursorVisible = false;
-        var engine = GameEngine.Instance;
-        var inputHandler = InputHandler.Instance;
 
         // Display the main menu
         ShowMainMenu();
@@ -23,21 +26,7 @@ class Program
             engine.StartTimer(initialTime);
 
             // Start a separate thread for input handling
-            Thread inputThread = new Thread(() =>
-            {
-                while (!engine.IsGameWon() && !engine.IsGameLost())
-                {
-                    if (Console.KeyAvailable)
-                    {
-                        ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                        bool skipCollisionCheck = inputHandler.Handle(keyInfo);
-                        // Check collision only if player is not undoing the move
-                        if (!skipCollisionCheck)
-                            engine.CheckCollision();
-                    }
-                    Thread.Sleep(50); // Adjust this value as needed
-                }
-            });
+            Thread inputThread = new Thread(HandleInput);
             inputThread.Start();
 
             // Main game loop for rendering and game state updates
@@ -51,7 +40,7 @@ class Program
                     break;
                 }
 
-                Thread.Sleep(1000); // Adjust this value as needed
+                Thread.Sleep(50); // Reduce the delay to increase responsiveness
             }
 
             inputThread.Join(); // Wait for the input thread to finish
@@ -76,6 +65,33 @@ class Program
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
+    }
+
+    static void HandleInput()
+    {
+        while (!engine.IsGameWon() && !engine.IsGameLost())
+        {
+            if (Console.KeyAvailable)
+            {
+                lock (keyPressLock) // Ensure only one key press is processed at a time
+                {
+                    if (!isProcessingKeyPress)
+                    {
+                        isProcessingKeyPress = true;
+                        ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                        bool skipCollisionCheck = inputHandler.Handle(keyInfo);
+                        // Check collision only if player is not undoing the move
+                        if (!skipCollisionCheck)
+                            engine.CheckCollision();
+
+                        // Set a short delay to debounce key presses
+                        Thread.Sleep(50); // Adjust this value as needed
+                        isProcessingKeyPress = false;
+                    }
+                }
+            }
+            Thread.Sleep(10); // Reduce this delay to increase responsiveness
+        }
     }
 
     static void ShowMainMenu()

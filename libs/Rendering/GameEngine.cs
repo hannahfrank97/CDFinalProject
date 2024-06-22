@@ -13,10 +13,12 @@
         private int levelTimeSeconds = 0;
         private System.Timers.Timer _timer;
         private int _remainingTime;
-        private GameObject? _focusedObject;
+        private PlayerSingelton _player;
         private Map map = new Map();
         private List<GameObject> gameObjects = new List<GameObject>();
         private object _lock = new object();
+        private object _moveLock = new object(); // Separate lock for movement
+        private bool isMoving = false; // Flag to check if a move is in progress
 
         public bool IsGameWon()
         {
@@ -50,6 +52,12 @@
 
             _timer = new System.Timers.Timer(1000); // Initialize the timer with 1 second interval
             _timer.Elapsed += OnTimedEvent;
+            _player = PlayerSingelton.Instance; // Ensure only one instance of player
+        }
+
+        public PlayerSingelton GetFocusedObject()
+        {
+            return _player;
         }
 
         public void StartTimer(int initialTime)
@@ -133,11 +141,6 @@
             }
         }
 
-        public GameObject GetFocusedObject()
-        {
-            return _focusedObject;
-        }
-
         public void Setup()
         {
             lock (_lock)
@@ -164,7 +167,11 @@
                     AddGameObject(CreateGameObject(gameObject));
                 }
 
-                _focusedObject = gameObjects.OfType<PlayerSingelton>().First();
+                _player = PlayerSingelton.Instance;
+                if (!gameObjects.Contains(_player))
+                {
+                    AddGameObject(_player);
+                }
                 StartTimer(levelTimeSeconds); // Start the timer when setting up the level
             }
         }
@@ -220,87 +227,99 @@
 
         public void CheckCollision()
         {
-            lock (_lock)
+            lock (_moveLock) // Use a separate lock for movement
             {
-                GameObject player = _focusedObject;
+                if (isMoving) return; // Skip if a move is already in progress
+
+                isMoving = true; // Set the flag to indicate a move is in progress
+
+                GameObject player = _player;
                 GameObject obstacle = map.Get(player.PosY, player.PosX);
                 // Move is allowed
                 if (obstacle == null || obstacle.Type == GameObjectType.Floor)
                 {
                     map.Save();
-                    return;
+                }
+                else
+                {
+                    HandleCollision(player, obstacle);
                 }
 
-                if (obstacle.Type == GameObjectType.Goal)
-                {
-                    if (!keyCollected)
-                    {
-                        _focusedObject.UndoMove();
-                    }
-                    else
-                    {
-                        this.DoorUnlocked = true;
-                    }
-                }
-
-                // Handle collision with a key
-                if (obstacle.Type == GameObjectType.Key)
-                {
-                    this.keyCollected = true;
-                    obstacle.Color = ConsoleColor.Cyan;
-                }
-
-                if (obstacle.Type == GameObjectType.Wall)
-                {
-                    _focusedObject.UndoMove();
-                    return;
-                }
-                // Handle collision with an Obstacle (e.g., old toast)
-                else if (obstacle.Type == GameObjectType.Obstacle)
-                {
-                    HandleObstacleCollision(player, (Obstacle)obstacle);
-                }
-                else if (obstacle.Type == GameObjectType.Box)
-                {
-                    int boxY = obstacle.PosY + player.getDy();
-                    int boxX = obstacle.PosX + player.getDx();
-                    GameObject obstacleObstacle = map.Get(boxY, boxX);
-
-                    if (
-                        obstacleObstacle.Type == GameObjectType.Wall
-                        || obstacleObstacle.Type == GameObjectType.Box
-                    )
-                    {
-                        // Do not move the player
-                        _focusedObject.UndoMove();
-                        return;
-                    }
-                    else
-                    {
-                        // Move the box
-                        obstacle.PosX = boxX;
-                        obstacle.PosY = boxY;
-
-                        // This also works if we move box from target to target, because we are smart ppl
-                        if (obstacle.Color == ConsoleColor.Green)
-                        {
-                            obstacle.Color = ConsoleColor.Yellow;
-                            missingGoals++;
-                        }
-                        if (map.Get(boxY, boxX).Type == GameObjectType.Goal)
-                        {
-                            missingGoals--;
-                            obstacle.Color = ConsoleColor.Green;
-                        }
-                    }
-                }
-                map.Save();
+                isMoving = false; // Reset the flag after the move is completed
             }
+        }
+
+        private void HandleCollision(GameObject player, GameObject obstacle)
+        {
+            if (obstacle.Type == GameObjectType.Goal)
+            {
+                if (!keyCollected)
+                {
+                    player.UndoMove();
+                }
+                else
+                {
+                    this.DoorUnlocked = true;
+                }
+            }
+
+            // Handle collision with a key
+            if (obstacle.Type == GameObjectType.Key)
+            {
+                this.keyCollected = true;
+                obstacle.Color = ConsoleColor.Cyan;
+            }
+
+            if (obstacle.Type == GameObjectType.Wall)
+            {
+                player.UndoMove();
+                return;
+            }
+
+            // Handle collision with an Obstacle (e.g., old toast)
+            if (obstacle.Type == GameObjectType.Obstacle)
+            {
+                HandleObstacleCollision(player, (Obstacle)obstacle);
+            }
+            else if (obstacle.Type == GameObjectType.Box)
+            {
+                int boxY = obstacle.PosY + player.getDy();
+                int boxX = obstacle.PosX + player.getDx();
+                GameObject obstacleObstacle = map.Get(boxY, boxX);
+
+                if (
+                    obstacleObstacle.Type == GameObjectType.Wall
+                    || obstacleObstacle.Type == GameObjectType.Box
+                )
+                {
+                    // Do not move the player
+                    player.UndoMove();
+                }
+                else
+                {
+                    // Move the box
+                    obstacle.PosX = boxX;
+                    obstacle.PosY = boxY;
+
+                    // This also works if we move box from target to target, because we are smart ppl
+                    if (obstacle.Color == ConsoleColor.Green)
+                    {
+                        obstacle.Color = ConsoleColor.Yellow;
+                        missingGoals++;
+                    }
+                    if (map.Get(boxY, boxX).Type == GameObjectType.Goal)
+                    {
+                        missingGoals--;
+                        obstacle.Color = ConsoleColor.Green;
+                    }
+                }
+            }
+            map.Save();
         }
 
         private void HandleObstacleCollision(GameObject player, Obstacle obstacle)
         {
-            lock (_lock)
+            lock (_moveLock) // Use a separate lock for movement
             {
                 // Display the message associated with the obstacle
                 currentMessage = obstacle.Message;
@@ -336,7 +355,7 @@
 
         public void Undo()
         {
-            lock (_lock)
+            lock (_moveLock) // Use a separate lock for movement
             {
                 map.Undo();
 
@@ -346,19 +365,19 @@
 
                 // Iterate through all objects and update their position
                 for (int y = 0; y < gameObjectLayer.GetLength(0); y++)
-                for (int x = 0; x < gameObjectLayer.GetLength(1); x++)
-                    if (gameObjectLayer[y, x] != null)
-                        if (gameObjectLayer[y, x].Type == GameObjectType.Box)
-                        {
-                            gameObjectLayer[y, x].PosX = x;
-                            gameObjectLayer[y, x].PosY = y;
-                            gameObjectLayer[y, x].setColor(ConsoleColor.Yellow);
-                        }
-                        else if (gameObjectLayer[y, x].Type == GameObjectType.Player)
-                        {
-                            _focusedObject.PosX = x;
-                            _focusedObject.PosY = y;
-                        }
+                    for (int x = 0; x < gameObjectLayer.GetLength(1); x++)
+                        if (gameObjectLayer[y, x] != null)
+                            if (gameObjectLayer[y, x].Type == GameObjectType.Box)
+                            {
+                                gameObjectLayer[y, x].PosX = x;
+                                gameObjectLayer[y, x].PosY = y;
+                                gameObjectLayer[y, x].setColor(ConsoleColor.Yellow);
+                            }
+                            else if (gameObjectLayer[y, x].Type == GameObjectType.Player)
+                            {
+                                _player.PosX = x;
+                                _player.PosY = y;
+                            }
 
                 // Update the missing boxes
                 List<Goal> goals = gameObjects.OfType<Goal>().ToList();
@@ -372,7 +391,7 @@
                     }
 
                 // Update the focused object color to show that move was undone
-                _focusedObject.setColor(ConsoleColor.Red);
+                _player.setColor(ConsoleColor.Red);
             }
         }
 
@@ -400,11 +419,15 @@
         {
             lock (_lock)
             {
-                map.Set(_focusedObject);
+                if (_player != null)
+                {
+                    map.Set(_player);
+                }
+
                 gameObjects.ForEach(
-                    delegate(GameObject obj)
+                    delegate (GameObject obj)
                     {
-                        if (obj != _focusedObject)
+                        if (obj != _player)
                             map.Set(obj);
                     }
                 );
@@ -434,4 +457,3 @@
         }
     }
 }
-

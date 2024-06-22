@@ -19,7 +19,7 @@ namespace libs
 
         private InputHandler()
         {
-            // INIT PROPS HERE IF NEEDED
+            // Initialize properties here if needed
             engine = GameEngine.Instance;
         }
 
