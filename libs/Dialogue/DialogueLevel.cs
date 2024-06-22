@@ -38,6 +38,8 @@ namespace libs.Dialogue
 
                     Console.WriteLine("End of conversation.");
                     Console.WriteLine($"Total points: {totalPoints}");
+                    Console.WriteLine("Press any key to proceed to the next level...");
+                    Console.ReadKey(); // Wait for user input before proceeding to the next level
                     return;
                 }
 
