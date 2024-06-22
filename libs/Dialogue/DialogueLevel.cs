@@ -63,6 +63,7 @@ namespace libs.Dialogue
 
     public class DialogueLevelJson
     {
+        public string LevelType { get; set; }
         public string LevelName { get; set; }
         public List<DialogueNode> Nodes { get; set; }
     }
