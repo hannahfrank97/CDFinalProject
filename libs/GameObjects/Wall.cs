@@ -5,7 +5,7 @@ public class Wall : GameObject
     public Wall() : base()
     {
         this.Type = GameObjectType.Wall;
-        this.CharRepresentation = '█';
+        this.CharRepresentationString = "🧱";
         this.Color = ConsoleColor.Cyan;
     }
 }

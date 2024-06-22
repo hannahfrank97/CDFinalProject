@@ -1,4 +1,10 @@
 {
-	"terminal.integrated.fontSize": 16,
-	"terminal.integrated.lineHeight": 1
+		"editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+		"editor.fontSize": 14,
+		"terminal.integrated.fontFamily": "Consolas, 'Courier New', monospace",
+		"terminal.integrated.fontSize": 16,
+		"terminal.integrated.lineHeight": 1,
+		"files.autoSave": "afterDelay",
+		"window.zoomLevel": 0
+	
 }

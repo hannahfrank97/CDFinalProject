@@ -20,7 +20,7 @@ public sealed class PlayerSingelton : GameObject
         : base()
     {
         Type = GameObjectType.Player;
-        CharRepresentation = '↑'; // up: ↑, down: ↓, left: ←, right: →
+        CharRepresentationString = "⬆️"; // up: ↑, down: ↓, left: ←, right: →
         Color = ConsoleColor.DarkYellow;
     }
 
@@ -28,29 +28,29 @@ public sealed class PlayerSingelton : GameObject
     {
         if (dx == 0 && dy == -1)
         {
-            if (CharRepresentation != '↑')
-                CharRepresentation = '↑';
+            if (CharRepresentationString != "⬆️")
+                CharRepresentationString = "⬆️";
             else
                 doMove(dx, dy);
         }
         else if (dx == 0 && dy == 1)
         {
-            if (CharRepresentation != '↓')
-                CharRepresentation = '↓';
+            if (CharRepresentationString != "⬇️")
+                CharRepresentationString = "⬇️";
             else
                 doMove(dx, dy);
         }
         else if (dx == -1 && dy == 0)
         {
-            if (CharRepresentation != '←')
-                CharRepresentation = '←';
+            if (CharRepresentationString != "⬅️")
+                CharRepresentationString = "⬅️";
             else
                 doMove(dx, dy);
         }
         else if (dx == 1 && dy == 0)
         {
-            if (CharRepresentation != '→')
-                CharRepresentation = '→';
+            if (CharRepresentationString != "➡️")
+                CharRepresentationString = "➡️";
             else
                 doMove(dx, dy);
         }

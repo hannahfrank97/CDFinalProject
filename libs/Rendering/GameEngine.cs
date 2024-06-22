@@ -46,7 +46,7 @@ public sealed class GameEngine
         gameObjectFactory = new GameObjectFactory();
 
         //Added for proper display of game characters
-        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.OutputEncoding = System.Text.Encoding.UTF8; // Ensure console encoding is set to UTF-8
     }
 
     private GameObject? _focusedObject;
@@ -267,7 +267,7 @@ public sealed class GameEngine
 
         //Obstacle becomes floor after collision
         obstacle.Type = GameObjectType.Floor;
-        obstacle.CharRepresentation = ' ';
+        obstacle.CharRepresentationString = " ";
 
         //Refreshing the spot on the map where the obstacle was
         map.Set(obstacle);

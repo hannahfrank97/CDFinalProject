@@ -9,6 +9,7 @@
 		{
 			"Type": "Obstacle",
 			"Color": 3,
+			"CharRepresentationString": "\uD83E\uDD64",
 			"PosX": 2,
 			"PosY": 2,
 			"TimeEffect": 60,

@@ -1,10 +1,13 @@
 ﻿using libs;
+using System;
+using System.Text;
 
 class Program
 {
     static void Main(string[] args)
     {
         //Setup
+        Console.OutputEncoding = Encoding.UTF8; // Set the console encoding to UTF-8
         Console.CursorVisible = false;
         var engine = GameEngine.Instance;
         var inputHandler = InputHandler.Instance;

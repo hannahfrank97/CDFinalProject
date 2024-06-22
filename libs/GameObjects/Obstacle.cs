@@ -8,18 +8,18 @@ public class Obstacle : GameObject
     public Obstacle() : base()
     {
         Type = GameObjectType.Obstacle;
-        CharRepresentation = '#';
+        CharRepresentationString = "#"; // Use string
         Color = ConsoleColor.DarkRed;
         TimeEffect = 0; // Default value
         Message = "Hello I am an obstacle!"; //Default value
     }
 
-    public Obstacle(int posX, int posY, ConsoleColor color, char charRepresentation, GameObjectType type) : base(posX, posY, color, charRepresentation, type)
+    public Obstacle(int posX, int posY, ConsoleColor color, string charRepresentationString, GameObjectType type) : base(posX, posY, color, charRepresentationString, type)
     {
         this.setPosX(posX);
         this.setPosY(posY);
         this.setColor(color);
-        CharRepresentation = charRepresentation;
+        this.CharRepresentationString = charRepresentationString;
         Type = type;
         Color = color;
         this.TimeEffect = TimeEffect;

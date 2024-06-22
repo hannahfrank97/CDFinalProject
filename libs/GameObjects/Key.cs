@@ -6,6 +6,6 @@ public class Key : GameObject
     public Key() : base()
     {
         Type = GameObjectType.Key;
-        CharRepresentation = '☼';
+        CharRepresentationString = "K"; // Use string
     }
 }

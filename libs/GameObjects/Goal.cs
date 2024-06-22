@@ -6,6 +6,6 @@ public class Goal : GameObject
     public Goal() : base()
     {
         Type = GameObjectType.Goal;
-        CharRepresentation = '☼';
+        CharRepresentationString = "G"; // Use string
     }
 }

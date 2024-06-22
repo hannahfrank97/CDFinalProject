@@ -4,7 +4,10 @@ using Newtonsoft.Json;
 
 public class GameObject : IGameObject, IMovement
 {
-    private char _charRepresentation = '#';
+    public string CharRepresentationString { get; set; } // Change to string for deserialization
+
+    [JsonIgnore]
+    public char CharRepresentation => CharRepresentationString[0]; // Convert string to char
     private ConsoleColor _color;
 
     // direction of the last movement
@@ -24,12 +27,14 @@ public class GameObject : IGameObject, IMovement
         this._posX = 5;
         this._posY = 5;
         this._color = ConsoleColor.Gray;
+        CharRepresentationString = " "; // Default value
     }
 
     public GameObject(int posX, int posY)
     {
         this._posX = posX;
         this._posY = posY;
+        CharRepresentationString = " "; // Default value
     }
 
     public GameObject(int posX, int posY, ConsoleColor color)
@@ -37,27 +42,22 @@ public class GameObject : IGameObject, IMovement
         this._posX = posX;
         this._posY = posY;
         this._color = color;
+        CharRepresentationString = " "; // Default value
     }
 
     public GameObject(
         int posX,
         int posY,
         ConsoleColor color,
-        char charRepresentation,
+        string charRepresentationString,
         GameObjectType type
     )
     {
         this._posX = posX;
         this._posY = posY;
         this._color = color;
-        this._charRepresentation = charRepresentation;
+        CharRepresentationString = charRepresentationString;
         this.Type = type;
-    }
-
-    public char CharRepresentation
-    {
-        get { return _charRepresentation; }
-        set { _charRepresentation = value; }
     }
 
     public ConsoleColor Color
