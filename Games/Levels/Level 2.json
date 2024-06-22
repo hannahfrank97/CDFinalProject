@@ -1,256 +1,152 @@
 {
-	"levelName": "You're mid",
-	"time": 300,
-	"map": {
-		"width": 10,
-		"height": 8
-	},
-	"gameObjects": [
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 1,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 2,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 3,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 4,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 5,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 6,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 7,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 8,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 1,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 2,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 3,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 4,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 5,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 6,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 7,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 8,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 1
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 2
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 3
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 4
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 5
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 6
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 1
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 2
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 3
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 4
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 5
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 6
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 5,
-			"PosY": 4
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 5,
-			"PosY": 3
-		},
-		{
-			"Type": "Player",
-			"Color": 5,
-			"PosX": 1,
-			"PosY": 1
-		},
-		{
-			"Type": "Goal",
-			"Color": 5,
-			"PosX": 6,
-			"PosY": 6
-		},
-		{
-			"Type": "Goal",
-			"Color": 5,
-			"PosX": 7,
-			"PosY": 6
-		},
-		{
-			"Type": "Goal",
-			"Color": 5,
-			"PosX": 8,
-			"PosY": 2
-		},
-		{
-			"Type": "Box",
-			"Color": 6,
-			"PosX": 2,
-			"PosY": 2
-		},
-		{
-			"Type": "Box",
-			"Color": 6,
-			"PosX": 2,
-			"PosY": 3
-		},
-		{
-			"Type": "Box",
-			"Color": 6,
-			"PosX": 7,
-			"PosY": 5
-		}
+	"levelName": "Call your denttist",
+	"nodes": [
+	  {
+		"id": "doctor_question1",
+		"text": "Doctor: \"What up dogs! It´s Big Snoop D-O-Double G! Hello Welcome to the office of Dr. TeethHurtNONO. How can I help you today?\"",
+		"options": [
+		  {
+			"text": "Hello Dr.! My teeth hurt yesyes, but I need Teeth Hurt NONO. Please do something.",
+			"points": 1,
+			"nextNodeId": "doctor_question2"
+		  },
+		  {
+			"text": "Hey old dude! Your opening hours are trash as Sh*t. I need an appointment ASAP.",
+			"points": -1,
+			"nextNodeId": "doctor_question2"
+		  }
+		]
+	  },
+	  {
+		"id": "doctor_question2",
+		"text": "Doctor: \"That's a shame to hear young person on the phone. I will do my best to fix it. But first I need your security number to secure the date höhö. Sorry for the dad joke.\"",
+		"options": [
+		  {
+			"text": "Sure! My security number is \"123456.\"",
+			"points": 1,
+			"nextNodeId": "doctor_question3"
+		  },
+		  {
+			"text": "Sure! My security number is \"Free-the-house-elves\".",
+			"points": -1,
+			"nextNodeId": "doctor_question3"
+		  },
+		  {
+			"text": "Sure! My security number is \"You shall not pass\".",
+			"points": -1,
+			"nextNodeId": "doctor_question3"
+		  }
+		]
+	  },
+	  {
+		"id": "doctor_question3",
+		"text": "Doctor: \"Thank you! Please describe your pain, is it a sharp, a dull ache, or something else?\"",
+		"options": [
+		  {
+			"text": "It feels like your mum is chopping onions on my tooth.",
+			"points": 1,
+			"nextNodeId": "doctor_question4"
+		  },
+		  {
+			"text": "It feels like your husband is a tiny DJ and scratching records on my molar.",
+			"points": -1,
+			"nextNodeId": "doctor_question4"
+		  },
+		  {
+			"text": "It feels like if your dad is part of a circus and performing stunts on my tooth.",
+			"points": 0,
+			"nextNodeId": "doctor_question4"
+		  }
+		]
+	  },
+	  {
+		"id": "doctor_question4",
+		"text": "Doctor: \"Okay I think I can totally comprehend with what you´re describing. Do you have any allergies?\"",
+		"options": [
+		  {
+			"text": "Yes, I am allergic to Kafka´s novels. They are all horrible!",
+			"points": -1,
+			"nextNodeId": "doctor_question5"
+		  },
+		  {
+			"text": "Yes, I am allergic to the existential dread in Dostoevsky´s work.",
+			"points": 1,
+			"nextNodeId": "doctor_question5"
+		  },
+		  {
+			"text": "Yes, I am allergic to Shakespearean poetry where not at least one person dies.",
+			"points": 1,
+			"nextNodeId": "doctor_question5"
+		  },
+		  {
+			"text": "Yes, I am allergic to peanuts and sterile environments.",
+			"points": -1,
+			"nextNodeId": "doctor_question5"
+		  }
+		]
+	  },
+	  {
+		"id": "doctor_question5",
+		"text": "Doctor: \"I see, I see! And have you tried to be a doctor yourself and to alleviate the pain at home?\"",
+		"options": [
+		  {
+			"text": "Excuseeeee meee!? Are you insane!? I could have died!",
+			"points": -1,
+			"nextNodeId": "doctor_question6"
+		  },
+		  {
+			"text": "Yes! I attempted to use a potion from my Harry Potter cookbook. Didn't work.",
+			"points": -1,
+			"nextNodeId": "doctor_question6"
+		  },
+		  {
+			"text": "Yes, I tried to fix it with some duct tape and a YouTube tutorial.",
+			"points": -1,
+			"nextNodeId": "doctor_question6"
+		  },
+		  {
+			"text": "Yes but then the painkiller asked me to not eat it and so save it´s life.",
+			"points": 1,
+			"nextNodeId": "doctor_question6"
+		  }
+		]
+	  },
+	  {
+		"id": "doctor_question6",
+		"text": "Doctor: \"Okay perfect. One last question before we finalize your appointment. If your toothache was a mythical creature, which one would it be?\"",
+		"options": [
+		  {
+			"text": "A dragon, breathing fire in my mouth.",
+			"points": 1,
+			"nextNodeId": "doctor_ending_good"
+		  },
+		  {
+			"text": "A unicorn, but with a horn that's stuck in my gum.",
+			"points": 1,
+			"nextNodeId": "doctor_ending_good"
+		  },
+		  {
+			"text": "A sad cat, whining with every bite.",
+			"points": 1,
+			"nextNodeId": "doctor_ending_good"
+		  },
+		  {
+			"text": "Your mum.",
+			"points": -1,
+			"nextNodeId": "doctor_ending_bad"
+		  }
+		]
+	  },
+	  {
+		"id": "doctor_ending_good",
+		"text": "Doctor: \"Alrighty then! Your appointment's set for tomorrow. See you then, and don't forget to give those teeth some TLC – maybe even tell them a joke or two! After all, a smile is just a giggle waiting to happen!\"",
+		"options": []
+	  },
+	  {
+		"id": "doctor_ending_bad",
+		"text": "Doctor: \"Awesome! Your appointment's set for February 1st, 2036. See you then, and until that day, treat your teeth like royalty – maybe even tell them a joke! After all, they deserve a crown!\"",
+		"options": []
+	  }
 	]
-}
+  }
+  
