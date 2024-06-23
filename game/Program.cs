@@ -130,7 +130,9 @@ class Program
         Console.Clear();
         Console.WriteLine("Instructions:");
         Console.WriteLine("1. Use the arrow keys to move.");
-        Console.WriteLine("2. Avoid obstacles.");
+        Console.WriteLine("2. Be aware of the time.");
+        Console.WriteLine("3. Some obstacles add, other substract some time.");
+        Console.WriteLine("4. Click yourself through the dialogues and choose your answers wisely.");
         Console.WriteLine("\nPress any key to return to the main menu...");
         Console.ReadKey();
     }
