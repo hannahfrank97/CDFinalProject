@@ -173,9 +173,20 @@ namespace libs
                 // Check if the level is a dialogue level
                 if (gameData.levelType == "dialogue")
                 {
-                    var dialogueLevel = new DialogueLevel(JsonConvert.SerializeObject(gameData));
+                    dialogueLevel = new DialogueLevel(JsonConvert.SerializeObject(gameData));
                     dialogueLevel.Run();
-                    return;
+
+                    // Debug output to check level completion
+                    Console.WriteLine($"Is Dialogue Level Complete: {dialogueLevel.IsLevelComplete}");
+
+                    // Check if the dialogue level is complete and load the next level if it is
+                    if (dialogueLevel.IsLevelComplete)
+                    {
+                        Console.WriteLine("Loading next level...");
+                        LoadNextLevel();
+                        return;
+                    }
+                    
                 }
 
                 map.MapWidth = gameData.map.width;
@@ -227,7 +238,9 @@ namespace libs
                 // Implementation for loading the next level
                 bool levelLeft = FileHandler.LoadNextLevel();
                 if (levelLeft)
+                {
                     Setup();
+                }
                 return levelLeft;
             }
         }

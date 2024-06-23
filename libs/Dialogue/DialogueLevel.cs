@@ -9,18 +9,22 @@ namespace libs.Dialogue
     {
         private List<DialogueNode> dialogueNodes;
         private DialogueNode currentNode;
+        private DialogueLevelJson jsonObject;
         private int totalPoints;
+        public bool IsLevelComplete { get; private set;}
 
         public DialogueLevel(string json)
         {
-            var jsonObject = JsonConvert.DeserializeObject<DialogueLevelJson>(json);
+            jsonObject = JsonConvert.DeserializeObject<DialogueLevelJson>(json);
             dialogueNodes = jsonObject.Nodes;
-            currentNode = dialogueNodes.FirstOrDefault(node => node.Id == "doctor_question1");
+            currentNode = dialogueNodes.FirstOrDefault(node => node.Id == jsonObject.StartNodeId); // Use StartNodeId
             totalPoints = 0;
+            IsLevelComplete = false; // Initialize to false
         }
 
         public void Run()
         {
+            IsLevelComplete = false; // Reset at the beginning of Run
             while (currentNode != null)
             {
                 Console.Clear();
@@ -32,6 +36,7 @@ namespace libs.Dialogue
                     Console.WriteLine($"Total points: {totalPoints}");
                     Console.WriteLine("Press any key to proceed to the next level...");
                     Console.ReadKey(); // Wait for user input before proceeding to the next level
+                    IsLevelComplete = true; // Set to true when the level is complete
                     return; // Exit the loop after displaying the ending
                 }
 
@@ -48,9 +53,13 @@ namespace libs.Dialogue
                     totalPoints += selectedOption.Points;
                     
                      // If it's the last question, determine the ending now
-                    if (currentNode.Id == "doctor_question6")
+                    if (currentNode.Id == "doctor_question6" || currentNode.Id == "uncle_question3_response1" || currentNode.Id == "uncle_question3_response2" || currentNode.Id == "uncle_question3_response3")
                     {
-                        string endingNodeId = totalPoints >= 0 ? "doctor_ending_good" : "doctor_ending_bad";
+                       {
+                        string endingNodeId = totalPoints >= 0
+                            ? (jsonObject.EndingType == "doctor" ? "doctor_ending_good" : "uncle_ending_good")
+                            : (jsonObject.EndingType == "doctor" ? "doctor_ending_bad" : "uncle_ending_bad");
+
                         currentNode = dialogueNodes.FirstOrDefault(node => node.Id == endingNodeId);
 
                          // Print the ending text once and exit the loop
@@ -62,10 +71,12 @@ namespace libs.Dialogue
                             Console.WriteLine($"Total points: {totalPoints}");
                             Console.WriteLine("Press any key to proceed to the next level...");
                             Console.ReadKey(); // Wait for user input before proceeding to the next level
+                            IsLevelComplete = true; // Set to true when the level is complete
                         }
 
                         return; // Exit the loop after displaying the ending
 
+                        }
                     }
                     else
                     {
@@ -84,6 +95,8 @@ namespace libs.Dialogue
     {
         public string LevelType { get; set; }
         public string LevelName { get; set; }
+         public string StartNodeId { get; set; }
+         public string EndingType { get; set; }
         public List<DialogueNode> Nodes { get; set; }
     }
 
