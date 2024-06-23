@@ -1,4 +1,7 @@
-﻿namespace libs
+﻿using libs.Dialogue;
+using Newtonsoft.Json;
+
+namespace libs
 {
     public sealed class GameEngine
     {
@@ -19,7 +22,7 @@
         private object _lock = new object();
         private object _moveLock = new object(); // Separate lock for movement
         private bool isMoving = false; // Flag to check if a move is in progress
-
+        private DialogueLevel dialogueLevel;
         public bool IsGameWon()
         {
             return DoorUnlocked == true;
@@ -166,6 +169,14 @@
                 this.DoorUnlocked = false;
 
                 dynamic gameData = FileHandler.ReadJson();
+
+                // Check if the level is a dialogue level
+                if (gameData.levelType == "dialogue")
+                {
+                    var dialogueLevel = new DialogueLevel(JsonConvert.SerializeObject(gameData));
+                    dialogueLevel.Run();
+                    return;
+                }
 
                 map.MapWidth = gameData.map.width;
                 map.MapHeight = gameData.map.height;
