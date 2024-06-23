@@ -1,6 +1,7 @@
 {
 	"levelType": "dialogue",
-	"levelName": "Racist Uncle",
+	"levelName": "Racist Uncle Conversation",
+	"startNodeId": "uncle_question1",
 	"endingType": "uncle",
 	"nodes": [
 	  {

@@ -1,6 +1,7 @@
 {
 	"levelType": "dialogue",
 	"levelName": "Call your denttist",
+	"startNodeId": "doctor_question1",
 	"endingType": "doctor",
 	"nodes": [
 	  {
