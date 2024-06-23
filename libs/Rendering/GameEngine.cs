@@ -175,6 +175,16 @@ namespace libs
                 {
                     var dialogueLevel = new DialogueLevel(JsonConvert.SerializeObject(gameData));
                     dialogueLevel.Run();
+
+                    // Debug output to check level completion
+                    Console.WriteLine($"Is Dialogue Level Complete: {dialogueLevel.IsLevelComplete}");
+
+                    // Check if the dialogue level is complete and load the next level if it is
+                    if (dialogueLevel.IsLevelComplete)
+                    {
+                        Console.WriteLine("Loading next level...");
+                        LoadNextLevel();
+                    }
                     return;
                 }
 
@@ -227,7 +237,9 @@ namespace libs
                 // Implementation for loading the next level
                 bool levelLeft = FileHandler.LoadNextLevel();
                 if (levelLeft)
+                {
                     Setup();
+                }
                 return levelLeft;
             }
         }
