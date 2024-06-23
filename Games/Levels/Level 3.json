@@ -1,346 +1,275 @@
 {
-	"levelName": "Hard? I don't think so!",
-	"time": 300,
-	"map": {
-		"width": 12,
-		"height": 10
-	},
-	"gameObjects": [
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 1,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 2,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 3,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 4,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 5,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 6,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 7,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 8,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 10,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 11,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 1
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 2
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 3
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 4
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 5
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 6
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 8
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 1,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 2,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 3,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 4,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 5,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 6,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 7,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 8,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 10,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 11,
-			"PosY": 9
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 11,
-			"PosY": 1
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 11,
-			"PosY": 2
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 11,
-			"PosY": 3
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 11,
-			"PosY": 4
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 11,
-			"PosY": 5
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 11,
-			"PosY": 6
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 11,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 11,
-			"PosY": 8
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 4,
-			"PosY": 1
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 4,
-			"PosY": 2
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 1
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 3
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 4,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 5,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 6,
-			"PosY": 7
-		},
-		{
-			"Type": "Player",
-			"Color": 5,
-			"PosX": 1,
-			"PosY": 1
-		},
-		{
-			"Type": "Box",
-			"Color": 6,
-			"PosX": 2,
-			"PosY": 2
-		},
-		{
-			"Type": "Box",
-			"Color": 6,
-			"PosX": 2,
-			"PosY": 3
-		},
-		{
-			"Type": "Box",
-			"Color": 6,
-			"PosX": 9,
-			"PosY": 7
-		},
-		{
-			"Type": "Box",
-			"Color": 6,
-			"PosX": 10,
-			"PosY": 7
-		},
-		{
-			"Type": "Goal",
-			"Color": 5,
-			"PosX": 6,
-			"PosY": 8
-		},
-		{
-			"Type": "Goal",
-			"Color": 5,
-			"PosX": 7,
-			"PosY": 8
-		},
-		{
-			"Type": "Goal",
-			"Color": 5,
-			"PosX": 9,
-			"PosY": 2
-		},
-		{
-			"Type": "Goal",
-			"Color": 5,
-			"PosX": 10,
-			"PosY": 2
-		}
+	"levelType": "dialogue",
+	"levelName": "Racist Uncle",
+	"endingType": "uncle",
+	"nodes": [
+	  {
+		"id": "uncle_question1",
+		"text": "Uncle: \"Hey what´s going on, buddy! Long time no see. I heard you are in a relationship now with a partner of your own gender. That´s fucking terrible. What happened!?\"",
+		"options": [
+		  {
+			"text": "Ähhhhhh excuse me. That´s none of your fucking business! I can have a relationship with whomever I want.",
+			"points": -2,
+			"nextNodeId": "uncle_question1_response1"
+		  },
+		  {
+			"text": "Jesus Christ, we live in the 21st century, Uncle Joe. I can even marry them if I want, crazy as it is.",
+			"points": -1,
+			"nextNodeId": "uncle_question1_response2"
+		  },
+		  {
+			"text": "I get that change is tough, Uncle Joe, but it's the way of the world. If Grandma can embrace the fact that I'm gay, then I'm sure you can find a way too.",
+			"points": 1,
+			"nextNodeId": "uncle_question1_response3"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question1_response1",
+		"text": "Uncle: \"None of my business? You think you can talk to me like that and get away with it?\"",
+		"options": [
+		  {
+			"text": "I'll talk to you however I want, old man.",
+			"points": -1,
+			"nextNodeId": "uncle_question2"
+		  },
+		  {
+			"text": "Maybe if you weren’t such a jerk, I wouldn't have to.",
+			"points": -1,
+			"nextNodeId": "uncle_question2"
+		  },
+		  {
+			"text": "Sorry, didn't mean to upset you. I was just angry because I felt that you don´t respect me nor my relationship.",
+			"points": 1,
+			"nextNodeId": "uncle_question2"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question1_response2",
+		"text": "Uncle: \"Marry them? What is this world coming to? You're out of your mind!\"",
+		"options": [
+		  {
+			"text": "It's called progress. Maybe you should try it sometime-you might finally step out of the dinosaur age!",
+			"points": -1,
+			"nextNodeId": "uncle_question2"
+		  },
+		  {
+			"text": "I'm happy with my life choices, Uncle Joe. Maybe you could focus on your own and learn more about different perspectives.",
+			"points": 1,
+			"nextNodeId": "uncle_question2"
+		  },
+		  {
+			"text": "Why do you even care Uncle Joe? Did Aunt Martha steal your coffee today?",
+			"points": 0,
+			"nextNodeId": "uncle_question2"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question1_response3",
+		"text": "Uncle: \"Fine, if Grandma can handle it, maybe I can too. But don’t expect me to change overnight.\"",
+		"options": [
+		  {
+			"text": "That's all I'm asking for, Uncle Joe. One step at a time.",
+			"points": 2,
+			"nextNodeId": "uncle_question2"
+		  },
+		  {
+			"text": "I'm not expecting a miracle, just some effort.",
+			"points": 1,
+			"nextNodeId": "uncle_question2"
+		  },
+		  {
+			"text": "I’m not holding my breath.",
+			"points": 0,
+			"nextNodeId": "uncle_question2"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question2",
+		"text": "Uncle: \"What did you just say Aunt Martha...Your Partner is Indian, so a foreigner???!!! How could you, that is unacceptable. Bring me a beer, I need one after such traumatic news....\"",
+		"options": [
+		  {
+			"text": "Uncle Joe, please. We talked about this already. The times of colonialism are over for good sake.",
+			"points": 1,
+			"nextNodeId": "uncle_question2_response1"
+		  },
+		  {
+			"text": "I know it´s hard to accept for you but the beliefs that the white race is superior is complete trash and far away from the reality.",
+			"points": 0,
+			"nextNodeId": "uncle_question2_response2"
+		  },
+		  {
+			"text": "For bigots and racists, it's disdain and hate, no room for their poison, let's liberate!",
+			"points": -2,
+			"nextNodeId": "uncle_question2_response3"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question2_response1",
+		"text": "Uncle: \"Oh, colonialism this, colonialism that. You young folks just don't get it. Back in my day, things were different, and they worked just fine! Where is my beeeerrrr!!!\"",
+		"options": [
+		  {
+			"text": "Uncle Joe, 'different' doesn't mean 'better'. We need to move forward, not cling to outdated beliefs.",
+			"points": 1,
+			"nextNodeId": "uncle_question3"
+		  },
+		  {
+			"text": "You're right, things were different. But that doesn't mean they were right. We have to do better.",
+			"points": 1,
+			"nextNodeId": "uncle_question3"
+		  },
+		  {
+			"text": "Okay, Boomer.",
+			"points": -2,
+			"nextNodeId": "uncle_question3"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question2_response2",
+		"text": "Uncle: \"Trash? What do you know about trash? Back in my day, we had respect, and everyone knew their place. None of this 'equality' and 'LGBTQI+ or - or %' or whatever nonsense.\"",
+		"options": [
+		  {
+			"text": "It’s always wrong to hate, but it’s never wrong to love.",
+			"points": 1,
+			"nextNodeId": "uncle_question3"
+		  },
+		  {
+			"text": "Don't hide yourself in regret, Just love yourself and you're set.",
+			"points": 1,
+			"nextNodeId": "uncle_question3"
+		  },
+		  {
+			"text": "I'm on the right track, baby, I was born this way.",
+			"points": 1,
+			"nextNodeId": "uncle_question3"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question2_response3",
+		"text": "Uncle: \"Liberate? From what, common sense? All this modern talk just makes my head spin. Back in my day, we didn't need all this political correctness, we were just woke without that.\"",
+		"options": [
+		  {
+			"text": "It's not about political correctness, it's about treating people with dignity and respect.",
+			"points": 1,
+			"nextNodeId": "uncle_question3"
+		  },
+		  {
+			"text": "No matter gay, straight, or bi, lesbian, transgender life, I'm on the right track, baby, I was born to survive.",
+			"points": 0,
+			"nextNodeId": "uncle_question3"
+		  },
+		  {
+			"text": "Political correctness is just code for 'stop being an insensitive idiot, Uncle Joe.",
+			"points": -2,
+			"nextNodeId": "uncle_question3"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question3",
+		"text": "Uncle: \"Okay so let´s talk about something more pleasant then. You know Aunt Martha wants to start working again, what an idiotic idea...back in my day, in the good old 1950s, women knew their place was in the kitchen (and the bedroom höhöhö), not in the boardroom!\"",
+		"options": [
+		  {
+			"text": "Who run the world? Girls!",
+			"points": -2,
+			"nextNodeId": "uncle_question3_response1"
+		  },
+		  {
+			"text": "Times have changed, and for the better. Women can do anything men can do, and sometimes even better.",
+			"points": 1,
+			"nextNodeId": "uncle_question3_response2"
+		  },
+		  {
+			"text": "Your day is over, Uncle Joe and I thank the universe everyday for that. It's time to let go of these outdated and horribly sexist ideas.",
+			"points": -1,
+			"nextNodeId": "uncle_question3_response3"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question3_response1",
+		"text": "Uncle: \"Girls running the world? Don't make me laugh. The world would be in chaos if women were in charge! Beyonce is maybe the only exception...\"",
+		"options": [
+		  {
+			"text": "Actually, there are many successful female leaders who have brought positive changes to their countries.",
+			"points": 1,
+			"nextNodeId": "placeholder"
+		  },
+		  {
+			"text": "Your fear of women in power is just another sign of your outdated thinking and your little confidence in yourself.",
+			"points": -2,
+			"nextNodeId": "placeholder"
+		  },
+		  {
+			"text": "We cannot all succeed when half of us are held back.",
+			"points": -1,
+			"nextNodeId": "placeholder"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question3_response2",
+		"text": "Uncle: \"Change?! What change!? I can´t see any changes, okay maybe the internet, but nothing else. What's wrong about the good old times where women just stayed at home?\"",
+		"options": [
+		  {
+			"text": "It's about balance, Uncle Joe. Women can have careers and still be great mothers and partners.",
+			"points": 1,
+			"nextNodeId": "placeholder"
+		  },
+		  {
+			"text": "We should all be feminists.",
+			"points": -2,
+			"nextNodeId": "placeholder"
+		  },
+		  {
+			"text": "Culture does not make people. People make culture. So if it is in the culture to treat women as less than men, we must make the culture.",
+			"points": -2,
+			"nextNodeId": "placeholder"
+		  }
+		]
+	  },
+	  {
+		"id": "uncle_question3_response3",
+		"text": "Uncle: \"Outdated, you say? Back in my day, families were happier, and we didn't have all these problems you youngsters talk about. Okay maybe the cold war and stuff but that was not dramatic anyways...\"",
+		"options": [
+		  {
+			"text": "Oh sure, Uncle Joe, nothing like the good ol' threat of nuclear annihilation to keep everyone cheerful.",
+			"points": -2,
+			"nextNodeId": "placeholder"
+		  },
+		  {
+			"text": "Right, because nothing screams happiness like constant fear of espionage and hiding under desks for drills.",
+			"points": -2,
+			"nextNodeId": "placeholder"
+		  },
+		  {
+			"text": "Nevermind what haters say, ignore them ’til they fade away.",
+			"points": -1,
+			"nextNodeId": "placeholder"
+		  }
+		]
+	  },
+	  {
+		"id": "placeholder",
+		"text": "This is a placeholder for the next question.",
+		"options": []
+	  },
+	  {
+		"id": "uncle_ending_good",
+		"text": "Uncle: \"Alrighty then! You made some good points. Maybe I should try to be more open-minded.\"",
+		"options": []
+	  },
+	  {
+		"id": "uncle_ending_bad",
+		"text": "Uncle: \"You know what, forget it. I'm too old to change. You do you, but don't expect me to be happy about it.\"",
+		"options": []
+	  }
 	]
-}
+  }
+  
