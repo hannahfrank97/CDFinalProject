@@ -28,19 +28,11 @@ namespace libs.Dialogue
 
                 if (!currentNode.Options.Any())
                 {
-                    string endingNodeId = totalPoints >= 0 ? "doctor_ending_good" : "doctor_ending_bad";
-                    currentNode = dialogueNodes.FirstOrDefault(node => node.Id == endingNodeId);
-
-                    if (currentNode != null)
-                    {
-                        Console.WriteLine(currentNode.Text);
-                    }
-
                     Console.WriteLine("End of conversation.");
                     Console.WriteLine($"Total points: {totalPoints}");
                     Console.WriteLine("Press any key to proceed to the next level...");
                     Console.ReadKey(); // Wait for user input before proceeding to the next level
-                    return;
+                    return; // Exit the loop after displaying the ending
                 }
 
                 for (int i = 0; i < currentNode.Options.Count; i++)
@@ -54,7 +46,31 @@ namespace libs.Dialogue
                 {
                     var selectedOption = currentNode.Options[choice - 1];
                     totalPoints += selectedOption.Points;
-                    currentNode = dialogueNodes.FirstOrDefault(node => node.Id == selectedOption.NextNodeId);
+                    
+                     // If it's the last question, determine the ending now
+                    if (currentNode.Id == "doctor_question6")
+                    {
+                        string endingNodeId = totalPoints >= 0 ? "doctor_ending_good" : "doctor_ending_bad";
+                        currentNode = dialogueNodes.FirstOrDefault(node => node.Id == endingNodeId);
+
+                         // Print the ending text once and exit the loop
+                        if (currentNode != null)
+                        {
+                            Console.Clear();
+                            Console.WriteLine(currentNode.Text);
+                            Console.WriteLine("End of conversation.");
+                            Console.WriteLine($"Total points: {totalPoints}");
+                            Console.WriteLine("Press any key to proceed to the next level...");
+                            Console.ReadKey(); // Wait for user input before proceeding to the next level
+                        }
+
+                        return; // Exit the loop after displaying the ending
+
+                    }
+                    else
+                    {
+                        currentNode = dialogueNodes.FirstOrDefault(node => node.Id == selectedOption.NextNodeId);
+                    }
                 }
                 else
                 {

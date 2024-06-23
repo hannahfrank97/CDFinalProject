@@ -119,22 +119,22 @@
 		  {
 			"text": "A dragon, breathing fire in my mouth.",
 			"points": 1,
-			"nextNodeId": "doctor_ending_good"
+			"nextNodeId": "placeholder"
 		  },
 		  {
 			"text": "A unicorn, but with a horn that's stuck in my gum.",
 			"points": 1,
-			"nextNodeId": "doctor_ending_good"
+			"nextNodeId": "placeholder"
 		  },
 		  {
 			"text": "A sad cat, whining with every bite.",
 			"points": 1,
-			"nextNodeId": "doctor_ending_good"
+			"nextNodeId": "placeholder"
 		  },
 		  {
 			"text": "Your mum.",
 			"points": -1,
-			"nextNodeId": "doctor_ending_bad"
+			"nextNodeId": "placeholder"
 		  }
 		]
 	  },
