@@ -18,7 +18,7 @@
         private List<GameObject> gameObjects = new List<GameObject>();
         private object _lock = new object();
         private object _moveLock = new object(); // Separating lock for movement
-        private bool isMoving = false; // Flag to check if a move is in progress or not
+        private bool isMoving = false; // boolean to check if a move is in progress or not
 
         public bool IsGameWon()
         {
