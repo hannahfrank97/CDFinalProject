@@ -17,8 +17,8 @@
         private Map map = new Map();
         private List<GameObject> gameObjects = new List<GameObject>();
         private object _lock = new object();
-        private object _moveLock = new object(); // Separate lock for movement
-        private bool isMoving = false; // Flag to check if a move is in progress
+        private object _moveLock = new object(); // Separating lock for movement
+        private bool isMoving = false; // Flag to check if a move is in progress or not
 
         public bool IsGameWon()
         {
@@ -44,15 +44,15 @@
 
         private GameEngine()
         {
-            // Initialize properties here if needed
+            
             gameObjectFactory = new GameObjectFactory();
 
-            // Added for proper display of game characters
+            
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             _timer = new System.Timers.Timer(1000); // Initialize the timer with 1 second interval
             _timer.Elapsed += OnTimedEvent;
-            _player = PlayerSingelton.Instance; // Ensure only one instance of player
+            _player = PlayerSingelton.Instance; // only one player object is allowed
         }
 
         public PlayerSingelton GetFocusedObject()
@@ -74,7 +74,7 @@
                 if (_remainingTime <= 0)
                 {
                     _timer.Stop();
-                    // Handle game over logic
+                   
                 }
                 else
                 {
@@ -88,9 +88,9 @@
             lock (_lock)
             {
                 TimeSpan timeLeft = TimeSpan.FromSeconds(_remainingTime);
-                Console.SetCursorPosition(0, 0); // Adjust the position as needed
+                Console.SetCursorPosition(0, 0); 
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("Time: " + timeLeft.ToString("mm\\:ss") + "        "); // Extra spaces to clear any previous longer time string
+                Console.Write("Time: " + timeLeft.ToString("mm\\:ss") + "        ");
             }
         }
 
@@ -98,19 +98,19 @@
         {
             lock (_lock)
             {
-                // Clear the console before rendering the game
+                
                 Console.Clear();
 
-                UpdateTimerDisplay(); // Keep the timer updated at the top
+                UpdateTimerDisplay(); 
 
-                Console.SetCursorPosition(0, 1); // Adjust the position to start rendering below the timer
+                Console.SetCursorPosition(0, 1); 
 
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(levelName);
 
                 PlaceGameObjects();
 
-                // Render the map
+               
                 for (int i = 0; i < map.MapHeight; i++)
                 {
                     for (int j = 0; j < map.MapWidth; j++)
@@ -145,7 +145,7 @@
         {
             lock (_lock)
             {
-                // Reset previous things:
+               
                 gameObjects.Clear();
                 this.keyCollected = false;
                 this.DoorUnlocked = false;
@@ -190,7 +190,7 @@
 
         public void CheckForSaveFiles()
         {
-            // Implementation for checking for save files
+           
             FileHandler.SaveSelector();
         }
 
@@ -221,21 +221,21 @@
             lock (_lock)
             {
                 _timer.Stop();
-                // Additional game over logic if needed
+                
             }
         }
 
         public void CheckCollision()
         {
-            lock (_moveLock) // Use a separate lock for movement
+            lock (_moveLock) 
             {
-                if (isMoving) return; // Skip if a move is already in progress
+                if (isMoving) return; 
 
-                isMoving = true; // Set the flag to indicate a move is in progress
+                isMoving = true;
 
                 GameObject player = _player;
                 GameObject obstacle = map.Get(player.PosY, player.PosX);
-                // Move is allowed
+                
                 if (obstacle == null || obstacle.Type == GameObjectType.Floor)
                 {
                     map.Save();
@@ -245,7 +245,7 @@
                     HandleCollision(player, obstacle);
                 }
 
-                isMoving = false; // Reset the flag after the move is completed
+                isMoving = false; 
             }
         }
 
@@ -276,7 +276,7 @@
                 return;
             }
 
-            // Handle collision with an Obstacle (e.g., old toast)
+           
             if (obstacle.Type == GameObjectType.Obstacle)
             {
                 HandleObstacleCollision(player, (Obstacle)obstacle);
@@ -292,16 +292,16 @@
                     || obstacleObstacle.Type == GameObjectType.Box
                 )
                 {
-                    // Do not move the player
+                    
                     player.UndoMove();
                 }
                 else
                 {
-                    // Move the box
+                   
                     obstacle.PosX = boxX;
                     obstacle.PosY = boxY;
 
-                    // This also works if we move box from target to target, because we are smart ppl
+                    
                     if (obstacle.Color == ConsoleColor.Green)
                     {
                         obstacle.Color = ConsoleColor.Yellow;
@@ -319,25 +319,25 @@
 
         private void HandleObstacleCollision(GameObject player, Obstacle obstacle)
         {
-            lock (_moveLock) // Use a separate lock for movement
+            lock (_moveLock) 
             {
-                // Display the message associated with the obstacle
+                
                 currentMessage = obstacle.Message;
 
-                // Optionally, handle time effects or other game state changes
+                
                 levelTimeSeconds += obstacle.TimeEffect;
 
-                // Prevent movement into the obstacle if necessary
+                
                 player.UndoMove();
 
-                // Obstacle becomes floor after collision
+                
                 obstacle.Type = GameObjectType.Floor;
                 obstacle.CharRepresentation = ' ';
 
-                // Refreshing the spot on the map where the obstacle was
+                
                 map.Set(obstacle);
 
-                // Remove the obstacle from the gameObjects list
+                
                 gameObjects.Remove(obstacle);
             }
         }
@@ -349,13 +349,13 @@
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(currentMessage);
                 Console.ResetColor();
-                currentMessage = ""; // Reset after displaying to prevent repeat display
+                currentMessage = ""; 
             }
         }
 
         public void Undo()
         {
-            lock (_moveLock) // Use a separate lock for movement
+            lock (_moveLock) 
             {
                 map.Undo();
 
@@ -363,7 +363,7 @@
                 if (gameObjectLayer == null)
                     return;
 
-                // Iterate through all objects and update their position
+                // Iterating through all objects and update their position
                 for (int y = 0; y < gameObjectLayer.GetLength(0); y++)
                     for (int x = 0; x < gameObjectLayer.GetLength(1); x++)
                         if (gameObjectLayer[y, x] != null)
@@ -379,7 +379,7 @@
                                 _player.PosY = y;
                             }
 
-                // Update the missing boxes
+                // Updating the missing boxes
                 List<Goal> goals = gameObjects.OfType<Goal>().ToList();
                 missingGoals = goals.Count;
 
@@ -395,7 +395,7 @@
             }
         }
 
-        // Method to create GameObject using the factory from clients
+        
         public GameObject CreateGameObject(dynamic obj)
         {
             return gameObjectFactory.CreateGameObject(obj);
