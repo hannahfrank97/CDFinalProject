@@ -9,13 +9,14 @@ namespace libs.Dialogue
     {
         private List<DialogueNode> dialogueNodes;
         private DialogueNode currentNode;
+        private DialogueLevelJson jsonObject;
         private int totalPoints;
 
         public DialogueLevel(string json)
         {
             var jsonObject = JsonConvert.DeserializeObject<DialogueLevelJson>(json);
             dialogueNodes = jsonObject.Nodes;
-            currentNode = dialogueNodes.FirstOrDefault(node => node.Id == "doctor_question1");
+            currentNode = dialogueNodes.FirstOrDefault(node => node.Id == jsonObject.StartNodeId); // Use StartNodeId
             totalPoints = 0;
         }
 
@@ -48,10 +49,14 @@ namespace libs.Dialogue
                     totalPoints += selectedOption.Points;
                     
                      // If it's the last question, determine the ending now
-                    if (currentNode.Id == "doctor_question6")
+                    if (currentNode != null && currentNode.Id == "placeholder")
                     {
-                        string endingNodeId = totalPoints >= 0 ? "doctor_ending_good" : "doctor_ending_bad";
-                        currentNode = dialogueNodes.FirstOrDefault(node => node.Id == endingNodeId);
+                       {
+                        string endingNodeId = totalPoints >= 0
+                            ? (jsonObject.EndingType == "doctor" ? "doctor_ending_good" : "uncle_ending_good")
+                            : (jsonObject.EndingType == "doctor" ? "doctor_ending_bad" : "uncle_ending_bad");
+
+                currentNode = dialogueNodes.FirstOrDefault(node => node.Id == endingNodeId);
 
                          // Print the ending text once and exit the loop
                         if (currentNode != null)
@@ -66,6 +71,7 @@ namespace libs.Dialogue
 
                         return; // Exit the loop after displaying the ending
 
+                        }
                     }
                     else
                     {
@@ -84,6 +90,8 @@ namespace libs.Dialogue
     {
         public string LevelType { get; set; }
         public string LevelName { get; set; }
+         public string StartNodeId { get; set; }
+         public string EndingType { get; set; }
         public List<DialogueNode> Nodes { get; set; }
     }
 
