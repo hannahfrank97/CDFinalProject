@@ -11,6 +11,7 @@ namespace libs.Dialogue
         private DialogueNode currentNode;
         private DialogueLevelJson jsonObject;
         private int totalPoints;
+        public bool IsLevelComplete { get; private set;}
 
         public DialogueLevel(string json)
         {
@@ -18,6 +19,7 @@ namespace libs.Dialogue
             dialogueNodes = jsonObject.Nodes;
             currentNode = dialogueNodes.FirstOrDefault(node => node.Id == jsonObject.StartNodeId); // Use StartNodeId
             totalPoints = 0;
+            IsLevelComplete = false; // Initialize to false
         }
 
         public void Run()
@@ -33,6 +35,7 @@ namespace libs.Dialogue
                     Console.WriteLine($"Total points: {totalPoints}");
                     Console.WriteLine("Press any key to proceed to the next level...");
                     Console.ReadKey(); // Wait for user input before proceeding to the next level
+                    IsLevelComplete = true; // Set to true when the level is complete
                     return; // Exit the loop after displaying the ending
                 }
 
@@ -67,6 +70,7 @@ namespace libs.Dialogue
                             Console.WriteLine($"Total points: {totalPoints}");
                             Console.WriteLine("Press any key to proceed to the next level...");
                             Console.ReadKey(); // Wait for user input before proceeding to the next level
+                            IsLevelComplete = true; // Set to true when the level is complete
                         }
 
                         return; // Exit the loop after displaying the ending
