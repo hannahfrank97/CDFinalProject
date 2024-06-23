@@ -15,7 +15,7 @@ namespace libs.Dialogue
 
         public DialogueLevel(string json)
         {
-            var jsonObject = JsonConvert.DeserializeObject<DialogueLevelJson>(json);
+            jsonObject = JsonConvert.DeserializeObject<DialogueLevelJson>(json);
             dialogueNodes = jsonObject.Nodes;
             currentNode = dialogueNodes.FirstOrDefault(node => node.Id == jsonObject.StartNodeId); // Use StartNodeId
             totalPoints = 0;
@@ -53,14 +53,14 @@ namespace libs.Dialogue
                     totalPoints += selectedOption.Points;
                     
                      // If it's the last question, determine the ending now
-                    if (currentNode != null && currentNode.Id == "placeholder")
+                    if (currentNode.Id == "doctor_question6" || currentNode.Id == "uncle_question3_response1" || currentNode.Id == "uncle_question3_response2" || currentNode.Id == "uncle_question3_response3")
                     {
                        {
                         string endingNodeId = totalPoints >= 0
                             ? (jsonObject.EndingType == "doctor" ? "doctor_ending_good" : "uncle_ending_good")
                             : (jsonObject.EndingType == "doctor" ? "doctor_ending_bad" : "uncle_ending_bad");
 
-                currentNode = dialogueNodes.FirstOrDefault(node => node.Id == endingNodeId);
+                        currentNode = dialogueNodes.FirstOrDefault(node => node.Id == endingNodeId);
 
                          // Print the ending text once and exit the loop
                         if (currentNode != null)
