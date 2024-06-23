@@ -57,8 +57,8 @@ namespace libs.Dialogue
                     {
                        {
                         string endingNodeId = totalPoints >= 0
-                            ? (jsonObject.EndingType == "doctor" ? "doctor_ending_good" : "doctor_ending_good")
-                            : (jsonObject.EndingType == "uncle" ? "uncle_ending_bad" : "uncle_ending_bad");
+                            ? (jsonObject.EndingType == "doctor" ? "doctor_ending_good" : "uncle_ending_good")
+                            : (jsonObject.EndingType == "doctor" ? "doctor_ending_bad" : "uncle_ending_bad");
 
                 currentNode = dialogueNodes.FirstOrDefault(node => node.Id == endingNodeId);
 
