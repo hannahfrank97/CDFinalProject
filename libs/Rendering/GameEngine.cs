@@ -23,6 +23,8 @@ namespace libs
         private object _moveLock = new object(); // Separate lock for movement
         private bool isMoving = false; // Flag to check if a move is in progress
         private DialogueLevel dialogueLevel;
+
+        public bool gameEnd = false;
         public bool IsGameWon()
         {
             return DoorUnlocked == true;
@@ -241,6 +243,9 @@ namespace libs
                 {
                     Setup();
                 }
+                else{
+                    GameOver();
+                }
                 return levelLeft;
             }
         }
@@ -261,6 +266,7 @@ namespace libs
             {
                 _timer.Stop();
                 // Additional game over logic if needed
+                gameEnd = true;
             }
         }
 

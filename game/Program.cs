@@ -30,7 +30,7 @@ class Program
             inputThread.Start();
 
             // Main game loop for rendering and game state updates
-            while (!engine.IsGameWon() && !engine.IsGameLost())
+            while (!engine.IsGameWon() && !engine.IsGameLost() && !engine.gameEnd)
             {
                 engine.RenderGame();
 
@@ -44,6 +44,13 @@ class Program
             }
 
             inputThread.Join(); // Wait for the input thread to finish
+
+            if(engine.gameEnd){
+                Console.Clear;
+                Console.WriteLine("You Won! Thanks for playing our game!");
+                break;
+            }
+
 
             if (engine.IsGameWon())
             {
