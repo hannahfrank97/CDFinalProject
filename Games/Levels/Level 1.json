@@ -74,115 +74,109 @@
 			"PosY": 2
 		},
 		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 0,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 1,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 2,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 3,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 4,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 5,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 6,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 7,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 8,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 9,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 0,
+			"PosY": 7
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 1,
+			"PosY": 7
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 2,
+			"PosY": 7
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 3,
+			"PosY": 7
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 4,
+			"PosY": 7
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 5,
+			"PosY": 7
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 6,
+			"PosY": 7
+		},
+		{
 			"Type": "Goal",
-			"Color": 5,
-			"PosX": 6,
-			"PosY": 6
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 1,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 2,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 3,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 4,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 5,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 6,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 7,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 8,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
-			"PosY": 0
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 1,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 2,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 3,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 4,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 5,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 6,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
 			"Color": 3,
 			"PosX": 7,
 			"PosY": 7
@@ -191,12 +185,6 @@
 			"Type": "Wall",
 			"Color": 3,
 			"PosX": 8,
-			"PosY": 7
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 9,
 			"PosY": 7
 		},
 		{
@@ -250,7 +238,7 @@
 		{
 			"Type": "Wall",
 			"Color": 3,
-			"PosX": 9,
+			"PosX": 8,
 			"PosY": 3
 		},
 		{

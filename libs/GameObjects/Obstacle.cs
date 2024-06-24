@@ -8,13 +8,13 @@ namespace libs
         public Obstacle() : base()
         {
             Type = GameObjectType.Obstacle;
-            CharRepresentation = '#';
+            CharRepresentation = "🪴"; // Make sure this is a string
             Color = ConsoleColor.DarkRed;
             TimeEffect = 0; // Default value
             Message = "Hello I am an obstacle!"; // Default value
         }
 
-        public Obstacle(int posX, int posY, ConsoleColor color, char charRepresentation, GameObjectType type, int timeEffect, string message)
+        public Obstacle(int posX, int posY, ConsoleColor color, string charRepresentation, GameObjectType type)
             : base(posX, posY, color, charRepresentation, type)
         {
             this.setPosX(posX);
@@ -23,8 +23,8 @@ namespace libs
             CharRepresentation = charRepresentation;
             Type = type;
             Color = color;
-            this.TimeEffect = timeEffect;
-            this.Message = message;
+            this.TimeEffect = TimeEffect;
+            this.Message = Message;
         }
     }
 }

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 public class Map
 {
-    private char[,] RepresentationalLayer;
+    private string[,] RepresentationalLayer;
     private List<GameObject?[,]> history = new List<GameObject?[,]>();
     private GameObject?[,] GameObjectLayer;
     private int _mapWidth;
@@ -25,7 +25,7 @@ public class Map
     {
         _mapWidth = 30;
         _mapHeight = 8;
-        RepresentationalLayer = new char[_mapHeight, _mapWidth];
+        RepresentationalLayer = new string[_mapHeight, _mapWidth];
         GameObjectLayer = new GameObject?[_mapHeight, _mapWidth];
     }
 
@@ -33,14 +33,14 @@ public class Map
     {
         _mapWidth = width;
         _mapHeight = height;
-        RepresentationalLayer = new char[_mapHeight, _mapWidth];
+        RepresentationalLayer = new string[_mapHeight, _mapWidth];
         GameObjectLayer = new GameObject?[_mapHeight, _mapWidth];
     }
 
     public void Initialize()
     {
         history.Clear();
-        RepresentationalLayer = new char[_mapHeight, _mapWidth];
+        RepresentationalLayer = new string[_mapHeight, _mapWidth];
         GameObjectLayer = new GameObject?[_mapHeight, _mapWidth];
 
         // Initialize the map with null values or some default values

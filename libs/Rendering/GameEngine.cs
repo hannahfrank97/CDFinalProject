@@ -360,7 +360,7 @@ namespace libs
 
                 // Obstacle becomes floor after collision
                 obstacle.Type = GameObjectType.Floor;
-                obstacle.CharRepresentation = ' ';
+                obstacle.CharRepresentation = " ";
 
                 // Refreshing the spot on the map where the obstacle was
                 map.Set(obstacle);

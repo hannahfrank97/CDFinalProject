@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 public class GameObject : IGameObject, IMovement
 {
-    private char _charRepresentation = '#';
+    private string _charRepresentation = "#";
     private ConsoleColor _color;
 
     // direction of the last movement
@@ -43,7 +43,7 @@ public class GameObject : IGameObject, IMovement
         int posX,
         int posY,
         ConsoleColor color,
-        char charRepresentation,
+        string charRepresentation,
         GameObjectType type
     )
     {
@@ -54,7 +54,7 @@ public class GameObject : IGameObject, IMovement
         this.Type = type;
     }
 
-    public char CharRepresentation
+    public string CharRepresentation
     {
         get { return _charRepresentation; }
         set { _charRepresentation = value; }
