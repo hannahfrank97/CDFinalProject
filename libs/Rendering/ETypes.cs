@@ -6,5 +6,5 @@ public enum GameObjectType
     Floor, // 3
     Goal, // 4
     Obstacle, // 5
-    Key // 6
+    Phone // 6
 }

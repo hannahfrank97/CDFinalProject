@@ -143,12 +143,12 @@ namespace libs
                 if (keyCollected)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Key collected");
+                    Console.WriteLine("Phone collected");
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Key not collected");
+                    Console.WriteLine("Phone not collected");
                 }
 
                 if (levelSaved != "")
@@ -265,7 +265,6 @@ namespace libs
             lock (_lock)
             {
                 _timer.Stop();
-                // Additional game over logic if needed
                 gameEnd = true;
             }
         }
@@ -307,7 +306,7 @@ namespace libs
                     this.DoorUnlocked = true;
                 }
             }
-            else if (obstacle.Type == GameObjectType.Key)
+            else if (obstacle.Type == GameObjectType.Phone)
             {
                 this.keyCollected = true;
                 obstacle.Color = ConsoleColor.Cyan;
@@ -474,7 +473,7 @@ namespace libs
 
             if (gameObject != null)
             {
-                if (gameObject.Type == GameObjectType.Key && keyCollected)
+                if (gameObject.Type == GameObjectType.Phone && keyCollected)
                 {
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write(' ');
