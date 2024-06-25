@@ -46,7 +46,7 @@ class Program
             inputThread.Join(); // Wait for the input thread to finish
 
             if(engine.gameEnd){
-                Console.Clear;
+                Console.Clear();
                 Console.WriteLine("You Won! Thanks for playing our game!");
                 break;
             }

@@ -30,6 +30,12 @@ public class GameObjectFactory : IGameObjectFactory
             case "Phone":
                 newObj = obj.ToObject<Phone>();
                 break;
+            case "Beer":
+                newObj = obj.ToObject<Beer>();
+                break;
+            case "Uncle":
+                newObj = obj.ToObject<Uncle>();
+                break;
         }
 
         return newObj;

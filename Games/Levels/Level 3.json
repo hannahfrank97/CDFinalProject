@@ -1,5 +1,5 @@
 {
-	"levelName": "level 3 - ay ay ay conversation with uncle",
+	"levelName": "level 3 - Bring your uncle a beer",
 	"time": 300,
 	"map": {
 		"width": 10,
@@ -56,7 +56,7 @@
 		},
 
 		{
-			"Type": "Phone",
+			"Type": "Beer",
 			"Color": 2,
 			"PosX": 7,
 			"PosY": 3
@@ -74,7 +74,7 @@
 			"PosY": 2
 		},
 		{
-			"Type": "Goal",
+			"Type": "Uncle",
 			"Color": 5,
 			"PosX": 6,
 			"PosY": 6

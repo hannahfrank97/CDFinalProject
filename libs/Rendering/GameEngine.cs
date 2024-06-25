@@ -295,7 +295,7 @@ namespace libs
 
         private void HandleCollision(GameObject player, GameObject obstacle)
         {
-            if (obstacle.Type == GameObjectType.Goal)
+            if (obstacle.Type == GameObjectType.Goal || obstacle.Type == GameObjectType.Uncle)
             {
                 if (!keyCollected)
                 {
@@ -306,7 +306,7 @@ namespace libs
                     this.DoorUnlocked = true;
                 }
             }
-            else if (obstacle.Type == GameObjectType.Phone)
+            else if (obstacle.Type == GameObjectType.Phone || obstacle.Type == GameObjectType.Beer)
             {
                 this.keyCollected = true;
                 obstacle.Color = ConsoleColor.Cyan;
@@ -473,7 +473,7 @@ namespace libs
 
             if (gameObject != null)
             {
-                if (gameObject.Type == GameObjectType.Phone && keyCollected)
+                if ((gameObject.Type == GameObjectType.Phone || gameObject.Type == GameObjectType.Beer) && keyCollected)
                 {
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write(' ');
