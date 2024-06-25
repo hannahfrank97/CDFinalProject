@@ -1,5 +1,5 @@
 {
-	"levelName": "easy-peasy",
+	"levelName": "Find your phone",
 	"time": 300,
 	"map": {
 		"width": 10,
@@ -52,13 +52,13 @@
 			"PosX": 3,
 			"PosY": 3,
 			"TimeEffect": 60,
-			"Message": "You find your smartphone and check your messages. Your professor overslept and class starts 5 minutes later. You gain 60 seconds!"
+			"Message": "You find an old wristwatch that had slipped behind the couch. Surprisingly, it's still ticking and shows the time is 1 minutes later than you thought. You gain 60 seconds!"
 		},
 
 		{
 			"Type": "Phone",
 			"Color": 2,
-			"PosX": 7,
+			"PosX": 8,
 			"PosY": 3
 		},
 		{

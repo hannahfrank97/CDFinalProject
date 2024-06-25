@@ -1,8 +1,8 @@
 {
-	"levelName": "level 3 - Bring your uncle a beer",
+	"levelName": "Bring your uncle a beer",
 	"time": 300,
 	"map": {
-		"width": 10,
+		"width": 14,
 		"height": 8
 	},
 	"gameObjects": [
@@ -58,7 +58,7 @@
 		{
 			"Type": "Beer",
 			"Color": 2,
-			"PosX": 7,
+			"PosX": 12,
 			"PosY": 3
 		},
 		{
@@ -238,20 +238,116 @@
 		{
 			"Type": "Wall",
 			"Color": 3,
-			"PosX": 9,
+			"PosX": 13,
 			"PosY": 1
 		},
 		{
 			"Type": "Wall",
 			"Color": 3,
-			"PosX": 9,
+			"PosX": 13,
 			"PosY": 2
 		},
 		{
 			"Type": "Wall",
 			"Color": 3,
-			"PosX": 9,
+			"PosX": 13,
 			"PosY": 3
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 13,
+			"PosY": 4
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 13,
+			"PosY": 5
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 12,
+			"PosY": 6
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 0,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 10,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 11,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 12,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 13,
+			"PosY": 0
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 9,
+			"PosY": 7
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 10,
+			"PosY": 7
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 11,
+			"PosY": 7
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 12,
+			"PosY": 7
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 12,
+			"PosY": 4
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 12,
+			"PosY": 2
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 11,
+			"PosY": 4
+		},
+		{
+			"Type": "Wall",
+			"Color": 3,
+			"PosX": 10,
+			"PosY": 4
 		},
 		{
 			"Type": "Wall",
@@ -262,20 +358,14 @@
 		{
 			"Type": "Wall",
 			"Color": 3,
-			"PosX": 9,
-			"PosY": 5
+			"PosX": 8,
+			"PosY": 4
 		},
 		{
 			"Type": "Wall",
 			"Color": 3,
-			"PosX": 9,
-			"PosY": 6
-		},
-		{
-			"Type": "Wall",
-			"Color": 3,
-			"PosX": 0,
-			"PosY": 0
+			"PosX": 7,
+			"PosY": 4
 		}
 	]
 }

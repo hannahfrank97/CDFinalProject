@@ -143,12 +143,14 @@ namespace libs
                 if (keyCollected)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Phone collected");
+                    if(levelName == "Find your phone") Console.WriteLine("Phone collected");
+                    else Console.WriteLine("Beer collected");
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Phone not collected");
+                    if(levelName == "Find your phone") Console.WriteLine("Phone not collected");
+                    else Console.WriteLine("Beer not collected");
                 }
 
                 if (levelSaved != "")
@@ -476,7 +478,7 @@ namespace libs
                 if ((gameObject.Type == GameObjectType.Phone || gameObject.Type == GameObjectType.Beer) && keyCollected)
                 {
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write(' ');
+                    Console.Write(" ");
                     return;
                 }
                 Console.ForegroundColor = gameObject.Color;
