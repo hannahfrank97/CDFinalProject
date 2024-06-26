@@ -43,14 +43,16 @@ class Program
                 Thread.Sleep(50); // Reduce the delay to increase responsiveness
             }
 
+            // Signal the input thread to stop and wait for it to finish
             inputThread.Join(); // Wait for the input thread to finish
 
-            if(engine.gameEnd){
+            if (engine.gameEnd)
+            {
                 Console.Clear();
                 Console.WriteLine("You Won! Thanks for playing our game!");
+                engine.GameOver();
                 break;
             }
-
 
             if (engine.IsGameWon())
             {
@@ -64,10 +66,8 @@ class Program
             }
         }
 
-        engine.RenderGame();
-        if (engine.IsGameWon())
-            Console.WriteLine("Congrats, you beat all levels!");
-        else if (engine.IsGameLost())
+        if(!engine.gameEnd) engine.RenderGame();
+        if (engine.IsGameLost())
             Console.WriteLine("Game over! You really suck at this!");
 
         Console.WriteLine("Press any key to exit...");
@@ -76,7 +76,7 @@ class Program
 
     static void HandleInput()
     {
-        while (!engine.IsGameWon() && !engine.IsGameLost())
+        while (!engine.IsGameWon() && !engine.IsGameLost() && !engine.gameEnd)
         {
             if (Console.KeyAvailable)
             {
